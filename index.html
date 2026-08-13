@@ -1,971 +1,1730 @@
-
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ayrik Design | 3D Portal</title>
+
+<title>Ayrik Design | Creative Studio</title>
 
 <style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Tahoma,Arial,sans-serif;
 }
 
-html, body {
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    background: #020207;
-    font-family: Arial, sans-serif;
-    color: white;
+html{
+    scroll-behavior:smooth;
 }
 
-#scene {
-    position: fixed;
-    inset: 0;
-    z-index: 1;
+body{
+    background:
+        radial-gradient(circle at 15% 20%,#6d28d933,transparent 30%),
+        radial-gradient(circle at 85% 15%,#0077ff33,transparent 30%),
+        radial-gradient(circle at 50% 90%,#4c1d9544,transparent 35%),
+        #03050d;
+    color:#fff;
+    overflow-x:hidden;
 }
 
-.interface {
-    position: fixed;
-    inset: 0;
-    z-index: 5;
-    pointer-events: none;
+body::before,
+body::after{
+    content:"";
+    position:fixed;
+    border-radius:50%;
+    filter:blur(110px);
+    pointer-events:none;
+    z-index:-1;
 }
 
-.logo {
-    position: absolute;
-    top: 28px;
-    left: 35px;
-    font-size: 25px;
-    font-weight: 900;
-    letter-spacing: 2px;
-    color: white;
+body::before{
+    width:450px;
+    height:450px;
+    background:#702cff;
+    opacity:.18;
+    top:-160px;
+    right:-100px;
+}
+
+body::after{
+    width:450px;
+    height:450px;
+    background:#008cff;
+    opacity:.15;
+    bottom:-160px;
+    left:-100px;
+}
+
+
+/* =========================
+NAVBAR
+========================= */
+
+nav{
+    position:sticky;
+    top:0;
+    z-index:100;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    padding:18px 7%;
+
+    background:rgba(3,5,13,.72);
+    backdrop-filter:blur(20px);
+
+    border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+.logo{
+    font-size:25px;
+    font-weight:900;
+
+    background:linear-gradient(
+        90deg,
+        #a855f7,
+        #00b7ff
+    );
+
+    -webkit-background-clip:text;
+    color:transparent;
+
+    letter-spacing:1px;
+}
+
+nav a{
+    color:#bbb;
+    text-decoration:none;
+    margin-right:20px;
+    transition:.3s;
+}
+
+nav a:hover{
+    color:#a855f7;
+}
+
+
+/* =========================
+HERO
+========================= */
+
+.hero{
+    min-height:92vh;
+    padding:70px 8%;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    gap:50px;
+}
+
+.hero-text{
+    max-width:650px;
+}
+
+.badge{
+    display:inline-block;
+
+    padding:8px 14px;
+
+    border:1px solid #8b5cf655;
+    background:#8b5cf611;
+
+    color:#b98aff;
+
+    border-radius:50px;
+
+    font-size:12px;
+
+    margin-bottom:22px;
+}
+
+.hero h1{
+    font-size:clamp(45px,7vw,80px);
+    line-height:1.1;
+    margin-bottom:25px;
+}
+
+.gradient{
+    background:
+        linear-gradient(
+            90deg,
+            #a855f7,
+            #00aaff,
+            #8b5cf6
+        );
+
+    -webkit-background-clip:text;
+    color:transparent;
+}
+
+.hero p{
+    color:#999;
+    line-height:2;
+    font-size:18px;
+    margin-bottom:30px;
+}
+
+.buttons{
+    display:flex;
+    gap:14px;
+    flex-wrap:wrap;
+}
+
+.btn{
+    padding:15px 25px;
+    border-radius:16px;
+    text-decoration:none;
+    font-weight:bold;
+    transition:.3s;
+    display:inline-block;
+}
+
+.btn-main{
+    color:white;
+
+    background:
+        linear-gradient(
+            135deg,
+            #7c3aed,
+            #008cff
+        );
+
+    box-shadow:
+        0 10px 35px #5b21b644;
+}
+
+.btn-main:hover{
+    transform:translateY(-5px);
+
+    box-shadow:
+        0 15px 45px #008cff55;
+}
+
+.btn-dark{
+    color:white;
+    background:#ffffff08;
+    border:1px solid #ffffff18;
+}
+
+.btn-dark:hover{
+    background:#ffffff12;
+}
+
+
+/* =========================
+CRYSTAL
+========================= */
+
+.crystal-area{
+    width:390px;
+    height:430px;
+
+    position:relative;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    perspective:1100px;
+}
+
+.crystal-glow{
+    position:absolute;
+
+    width:240px;
+    height:240px;
+
+    border-radius:50%;
+
+    background:
+        radial-gradient(
+            circle,
+            #8b5cf6,
+            #008cff,
+            transparent 70%
+        );
+
+    filter:blur(60px);
+
+    opacity:.45;
+
+    animation:glowPulse 4s ease-in-out infinite;
+}
+
+@keyframes glowPulse{
+
+    0%,100%{
+        transform:scale(.9);
+        opacity:.35;
+    }
+
+    50%{
+        transform:scale(1.15);
+        opacity:.55;
+    }
+
+}
+
+.crystal{
+    width:180px;
+    height:250px;
+
+    position:relative;
+
+    transform-style:preserve-3d;
+
+    animation:
+        crystalFloat 5s ease-in-out infinite,
+        crystalRotate 14s linear infinite;
+}
+
+.crystal-face{
+    position:absolute;
+
+    width:180px;
+    height:250px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(168,85,247,.35),
+            rgba(0,170,255,.28),
+            rgba(255,255,255,.08)
+        );
+
+    border:1px solid rgba(255,255,255,.55);
+
+    box-shadow:
+        inset 0 0 35px rgba(255,255,255,.12),
+        0 0 25px rgba(99,102,241,.25);
+
+    backdrop-filter:blur(8px);
+
+    overflow:hidden;
+}
+
+.crystal-face::after{
+    content:"";
+
+    position:absolute;
+
+    width:35%;
+    height:140%;
+
+    top:-20%;
+    left:-70%;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,.45),
+            transparent
+        );
+
+    transform:rotate(25deg);
+
+    animation:
+        crystalShine 4s ease-in-out infinite;
+}
+
+@keyframes crystalShine{
+
+    0%{
+        left:-70%;
+    }
+
+    55%,100%{
+        left:130%;
+    }
+
+}
+
+.crystal-face span{
+
+    font-size:22px;
+    font-weight:900;
+
+    letter-spacing:4px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #ffffff,
+            #b78cff,
+            #55d8ff
+        );
+
+    -webkit-background-clip:text;
+    color:transparent;
+
     text-shadow:
-        0 0 10px #7c3cff,
-        0 0 25px #00d9ff;
+        0 0 20px rgba(139,92,246,.7);
+
+    transform:translateZ(10px);
 }
 
-.subtitle {
-    position: absolute;
-    top: 68px;
-    left: 37px;
-    color: #8f8f9e;
-    font-size: 11px;
-    letter-spacing: 3px;
+.crystal-face.front{
+    transform:translateZ(90px);
 }
 
-.info {
-    position: absolute;
-    right: 35px;
-    top: 30px;
-    text-align: right;
+.crystal-face.back{
+    transform:
+        rotateY(180deg)
+        translateZ(90px);
 }
 
-.info h2 {
-    font-size: 15px;
-    color: #fff;
-    margin-bottom: 7px;
+.crystal-face.right{
+    transform:
+        rotateY(90deg)
+        translateZ(90px);
 }
 
-.info p {
-    color: #777783;
-    font-size: 11px;
+.crystal-face.left{
+    transform:
+        rotateY(-90deg)
+        translateZ(90px);
 }
 
-.cards {
-    position: absolute;
-    right: 35px;
-    top: 50%;
-    transform: translateY(-50%);
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-    pointer-events: auto;
+.crystal-face.top{
+    height:180px;
+
+    transform:
+        rotateX(90deg)
+        translateZ(125px);
 }
 
-.card {
-    width: 190px;
-    padding: 17px 20px;
-    border-radius: 18px;
-    border: 1px solid rgba(255,255,255,.15);
-    background: rgba(255,255,255,.055);
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
-    cursor: pointer;
-    transition: .3s ease;
+.crystal-face.bottom{
+    height:180px;
+
+    transform:
+        rotateX(-90deg)
+        translateZ(125px);
+}
+
+@keyframes crystalRotate{
+
+    0%{
+        transform:
+            rotateX(-8deg)
+            rotateY(0deg);
+    }
+
+    100%{
+        transform:
+            rotateX(352deg)
+            rotateY(360deg);
+    }
+
+}
+
+@keyframes crystalFloat{
+
+    0%,100%{
+        translate:0 0;
+    }
+
+    50%{
+        translate:0 -22px;
+    }
+
+}
+
+.crystal-ring{
+    position:absolute;
+
+    border-radius:50%;
+
+    pointer-events:none;
+
+    border:2px solid rgba(100,180,255,.35);
+}
+
+.ring-one{
+    width:310px;
+    height:105px;
+
+    transform:
+        rotateX(68deg)
+        rotateZ(-15deg);
+
+    animation:ringOne 7s linear infinite;
+}
+
+.ring-two{
+    width:285px;
+    height:95px;
+
+    transform:
+        rotateX(68deg)
+        rotateZ(75deg);
+
+    border-color:rgba(168,85,247,.4);
+
+    animation:ringTwo 9s linear infinite;
+}
+
+@keyframes ringOne{
+
+    from{
+        rotate:0deg;
+    }
+
+    to{
+        rotate:360deg;
+    }
+
+}
+
+@keyframes ringTwo{
+
+    from{
+        rotate:360deg;
+    }
+
+    to{
+        rotate:0deg;
+    }
+
+}
+
+
+/* =========================
+GENERAL
+========================= */
+
+section{
+    padding:90px 8%;
+}
+
+.section-title{
+    text-align:center;
+    margin-bottom:50px;
+}
+
+.section-title h2{
+    font-size:40px;
+    margin-bottom:12px;
+}
+
+.section-title p{
+    color:#888;
+}
+
+
+/* =========================
+SERVICES
+========================= */
+
+.services{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:20px;
+}
+
+.card{
+    padding:30px;
+
+    border-radius:25px;
+
+    background:#ffffff06;
+
+    border:1px solid #ffffff10;
+
+    text-align:center;
+
+    transition:.35s;
+}
+
+.card:hover{
+    transform:translateY(-10px);
+
+    border-color:#8b5cf666;
+
     box-shadow:
-        inset 0 0 20px rgba(255,255,255,.025),
-        0 10px 40px rgba(0,0,0,.35);
+        0 20px 50px #5b21b622;
 }
 
-.card:hover {
-    transform: translateX(-8px) scale(1.03);
-    border-color: rgba(0,220,255,.6);
+.card-icon{
+    font-size:42px;
+    margin-bottom:18px;
+}
+
+.card h3{
+    margin-bottom:12px;
+}
+
+.card p{
+    color:#888;
+    line-height:1.8;
+}
+
+
+/* =========================
+PORTFOLIO
+========================= */
+
+.portfolio{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:20px;
+}
+
+.work{
+    overflow:hidden;
+
+    border-radius:25px;
+
+    background:#ffffff06;
+
+    border:1px solid #ffffff10;
+
+    transition:.35s;
+}
+
+.work:hover{
+    transform:
+        translateY(-10px)
+        scale(1.02);
+
+    border-color:#8b5cf677;
+
     box-shadow:
-        0 0 25px rgba(0,210,255,.18),
-        inset 0 0 20px rgba(0,210,255,.04);
+        0 20px 50px #0008;
 }
 
-.card span {
-    display: block;
-    font-size: 22px;
-    margin-bottom: 7px;
+.work img{
+    width:100%;
+    height:240px;
+
+    object-fit:cover;
+
+    display:block;
+
+    transition:.4s;
 }
 
-.card strong {
-    display: block;
-    font-size: 14px;
+.work:hover img{
+    transform:scale(1.06);
 }
 
-.card small {
-    color: #858593;
-    font-size: 10px;
+.work-info{
+    padding:18px;
 }
 
-.enter {
-    position: absolute;
-    bottom: 35px;
-    left: 50%;
-    transform: translateX(-50%);
-    pointer-events: auto;
+.work-info h3{
+    margin-bottom:7px;
+}
 
-    padding: 14px 35px;
-    border-radius: 50px;
-    border: 1px solid rgba(0,220,255,.5);
-    background: rgba(0,180,255,.07);
-    color: white;
-    font-size: 12px;
-    font-weight: bold;
-    letter-spacing: 3px;
-    cursor: pointer;
+.work-info p{
+    color:#888;
+}
+
+
+/* =================================================
+INSTAGRAM
+================================================= */
+
+.social-box{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(2,minmax(280px,380px));
+
+    justify-content:center;
+
+    gap:28px;
+
+}
+
+
+/* کارت */
+
+.social{
+
+    position:relative;
+
+    min-height:210px;
+
+    padding:30px;
+
+    border-radius:30px;
+
+    overflow:hidden;
+
+    color:white;
+
+    text-decoration:none;
+
+    text-align:right;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:space-between;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.12),
+            rgba(255,255,255,.025)
+        );
+
+    border:1px solid rgba(255,255,255,.14);
+
+    backdrop-filter:blur(20px);
 
     box-shadow:
-        0 0 25px rgba(0,210,255,.15),
-        inset 0 0 15px rgba(0,210,255,.04);
+        0 20px 60px rgba(0,0,0,.35);
 
-    transition: .3s;
+    transition:
+        transform .45s,
+        border-color .45s,
+        box-shadow .45s;
+
 }
 
-.enter:hover {
-    background: rgba(0,210,255,.15);
+
+/* نور دور کارت */
+
+.social::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:180px;
+    height:180px;
+
+    border-radius:50%;
+
+    top:-90px;
+    right:-60px;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(168,85,247,.5),
+            transparent 70%
+        );
+
+    filter:blur(15px);
+
+    transition:.5s;
+}
+
+
+/* خط نور پایین */
+
+.social::after{
+
+    content:"";
+
+    position:absolute;
+
+    left:10%;
+    right:10%;
+    bottom:0;
+
+    height:2px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            #a855f7,
+            #00b7ff,
+            transparent
+        );
+
     box-shadow:
-        0 0 40px rgba(0,210,255,.3),
-        inset 0 0 20px rgba(0,210,255,.08);
-    transform: translateX(-50%) scale(1.06);
+        0 0 18px #8b5cf6;
+
+    opacity:.7;
 }
 
-.hint {
-    position: absolute;
-    bottom: 13px;
-    left: 50%;
-    transform: translateX(-50%);
-    color: #4e4e59;
-    font-size: 9px;
-    letter-spacing: 2px;
+
+/* Hover */
+
+.social:hover{
+
+    transform:
+        translateY(-12px)
+        scale(1.025)
+        rotateX(3deg);
+
+    border-color:
+        rgba(168,85,247,.55);
+
+    box-shadow:
+        0 25px 70px rgba(90,40,180,.3),
+        0 0 35px rgba(0,150,255,.12);
+
 }
 
-#loading {
-    position: fixed;
-    inset: 0;
-    z-index: 20;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: #020207;
-    transition: opacity .8s;
+.social:hover::before{
+
+    transform:
+        scale(1.5);
+
+    opacity:.9;
 }
 
-.loader {
-    width: 45px;
-    height: 45px;
-    border-radius: 50%;
-    border: 2px solid rgba(255,255,255,.08);
-    border-top-color: #00d9ff;
-    border-right-color: #8b42ff;
-    animation: spin 1s linear infinite;
+
+/* بالای کارت */
+
+.social-top{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    position:relative;
+
+    z-index:2;
 }
 
-@keyframes spin {
-    to {
-        transform: rotate(360deg);
-    }
+
+/* آیکون */
+
+.social-icon{
+
+    width:65px;
+    height:65px;
+
+    border-radius:20px;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    font-size:34px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #833ab4,
+            #fd1d1d,
+            #fcb045
+        );
+
+    box-shadow:
+        0 0 30px rgba(225,48,108,.3);
+
+    transition:.4s;
 }
 
-@media(max-width:700px) {
+.social:hover .social-icon{
 
-    .logo {
-        left: 18px;
-        top: 20px;
-        font-size: 20px;
-    }
+    transform:
+        rotate(-8deg)
+        scale(1.1);
 
-    .subtitle {
-        left: 20px;
-        top: 49px;
-    }
-
-    .info {
-        right: 18px;
-        top: 20px;
-    }
-
-    .cards {
-        right: 50%;
-        top: auto;
-        bottom: 90px;
-        transform: translateX(50%);
-        flex-direction: row;
-        gap: 7px;
-    }
-
-    .card {
-        width: 92px;
-        padding: 11px;
-        text-align: center;
-        border-radius: 14px;
-    }
-
-    .card span {
-        font-size: 18px;
-        margin-bottom: 3px;
-    }
-
-    .card strong {
-        font-size: 10px;
-    }
-
-    .card small {
-        display: none;
-    }
-
-    .enter {
-        bottom: 30px;
-        padding: 11px 25px;
-    }
-
-    .hint {
-        display: none;
-    }
+    box-shadow:
+        0 0 40px rgba(225,48,108,.5);
 }
+
+
+/* تگ */
+
+.social-tag{
+
+    padding:7px 12px;
+
+    border-radius:50px;
+
+    font-size:10px;
+
+    color:#bbb;
+
+    background:#ffffff0a;
+
+    border:1px solid #ffffff12;
+}
+
+
+/* متن */
+
+.social-content{
+
+    position:relative;
+
+    z-index:2;
+
+    margin-top:25px;
+}
+
+.social strong{
+
+    display:block;
+
+    font-size:24px;
+
+    margin-bottom:8px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #fff,
+            #b98aff,
+            #63d8ff
+        );
+
+    -webkit-background-clip:text;
+
+    color:transparent;
+}
+
+.social small{
+
+    color:#888;
+
+    font-size:14px;
+}
+
+
+/* دکمه داخل کارت */
+
+.social-button{
+
+    position:relative;
+
+    z-index:2;
+
+    margin-top:22px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    padding:12px 15px;
+
+    border-radius:14px;
+
+    background:#ffffff08;
+
+    border:1px solid #ffffff10;
+
+    color:#ddd;
+
+    font-size:13px;
+}
+
+.social-button span:last-child{
+
+    color:#a855f7;
+
+    font-size:18px;
+
+    transition:.3s;
+}
+
+.social:hover .social-button span:last-child{
+
+    transform:
+        translateX(-6px);
+
+}
+
+
+/* =========================
+ORDER
+========================= */
+
+.order{
+    text-align:center;
+
+    padding:70px 25px;
+
+    border-radius:35px;
+
+    background:
+        radial-gradient(
+            circle at center,
+            #7c3aed22,
+            transparent 65%
+        ),
+        #ffffff05;
+
+    border:1px solid #8b5cf633;
+}
+
+.order h2{
+    font-size:42px;
+    margin-bottom:15px;
+}
+
+.order p{
+    color:#999;
+    margin-bottom:30px;
+}
+
+
+/* =========================
+FOOTER
+========================= */
+
+footer{
+
+    padding:35px 8%;
+
+    text-align:center;
+
+    color:#666;
+
+    border-top:
+        1px solid #ffffff0d;
+}
+
+footer strong{
+    color:#a855f7;
+}
+
+
+/* =========================
+ANIMATION
+========================= */
+
+@keyframes fadeUp{
+
+    from{
+        opacity:0;
+
+        transform:
+            translateY(25px);
+    }
+
+    to{
+        opacity:1;
+
+        transform:
+            translateY(0);
+    }
+
+}
+
+.hero-text,
+.crystal-area,
+.card,
+.work,
+.social,
+.order{
+
+    animation:
+        fadeUp .9s ease both;
+}
+
+
+/* =========================
+MOBILE
+========================= */
+
+@media(max-width:1000px){
+
+    .hero{
+        flex-direction:column;
+        text-align:center;
+    }
+
+    .buttons{
+        justify-content:center;
+    }
+
+    .services{
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+    .portfolio{
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+}
+
+@media(max-width:600px){
+
+    nav .links{
+        display:none;
+    }
+
+    .hero{
+        padding:55px 5%;
+    }
+
+    .hero h1{
+        font-size:45px;
+    }
+
+    .crystal-area{
+        width:100%;
+        height:380px;
+    }
+
+    .crystal{
+        width:150px;
+        height:220px;
+    }
+
+    .crystal-face{
+        width:150px;
+        height:220px;
+    }
+
+    .crystal-face.front{
+        transform:translateZ(75px);
+    }
+
+    .crystal-face.back{
+        transform:
+            rotateY(180deg)
+            translateZ(75px);
+    }
+
+    .crystal-face.right{
+        transform:
+            rotateY(90deg)
+            translateZ(75px);
+    }
+
+    .crystal-face.left{
+        transform:
+            rotateY(-90deg)
+            translateZ(75px);
+    }
+
+    .crystal-face.top{
+        transform:
+            rotateX(90deg)
+            translateZ(110px);
+    }
+
+    .crystal-face.bottom{
+        transform:
+            rotateX(-90deg)
+            translateZ(110px);
+    }
+
+    .services{
+        grid-template-columns:1fr;
+    }
+
+    .portfolio{
+        grid-template-columns:1fr;
+    }
+
+    .social-box{
+        grid-template-columns:1fr;
+    }
+
+    .social{
+        min-height:200px;
+    }
+
+    .section-title h2{
+        font-size:32px;
+    }
+
+    .order h2{
+        font-size:32px;
+    }
+
+}
+
 </style>
+
 </head>
+
 
 <body>
 
-<div id="loading">
-    <div class="loader"></div>
-</div>
 
-<div id="scene"></div>
+<!-- =========================
+NAVBAR
+========================= -->
 
-<div class="interface">
+<nav>
 
     <div class="logo">
         AYRIK DESIGN
     </div>
 
-    <div class="subtitle">
-        CREATIVE DIGITAL STUDIO
+    <div class="links">
+
+        <a href="#home">
+            خانه
+        </a>
+
+        <a href="#services">
+            خدمات
+        </a>
+
+        <a href="#portfolio">
+            نمونه‌کارها
+        </a>
+
+        <a href="#social">
+            اینستاگرام
+        </a>
+
     </div>
 
-    <div class="info">
-        <h2>پرتال خلاقیت</h2>
-        <p>یک تجربه متفاوت از طراحی دیجیتال</p>
-    </div>
+</nav>
 
-    <div class="cards">
 
-        <div class="card" onclick="openSection('design')">
-            <span>🎨</span>
-            <strong>طراحی</strong>
-            <small>نمونه‌کارها و خدمات</small>
+<!-- =========================
+HERO
+========================= -->
+
+<section class="hero" id="home">
+
+
+    <div class="hero-text">
+
+
+        <div class="badge">
+            CREATIVE STUDIO • 2026
         </div>
 
-        <div class="card" onclick="openSection('ai')">
-            <span>🤖</span>
-            <strong>MEDO AI</strong>
-            <small>دنیای هوش مصنوعی</small>
+
+        <h1>
+
+            طراحی متفاوت با
+
+            <span class="gradient">
+                Ayrik Design
+            </span>
+
+        </h1>
+
+
+        <p>
+
+            جایی برای طراحی‌های خاص،
+            هویت بصری قدرتمند و ایده‌هایی
+            که قرار نیست شبیه بقیه باشند.
+
+        </p>
+
+
+        <div class="buttons">
+
+
+            <a
+                class="btn btn-main"
+                href="https://t.me/Ayrik_Ai09_bot"
+                target="_blank"
+            >
+                🤖 سفارش از ربات
+            </a>
+
+
+            <a
+                class="btn btn-dark"
+                href="#portfolio"
+            >
+                🖼️ مشاهده نمونه‌کارها
+            </a>
+
+
         </div>
 
-        <div class="card" onclick="openSection('order')">
-            <span>💼</span>
-            <strong>سفارش</strong>
-            <small>پروژه اختصاصی</small>
-        </div>
 
     </div>
 
-    <button class="enter" onclick="enterPortal()">
-        ENTER PORTAL
-    </button>
 
-    <div class="hint">
-        MOVE YOUR MOUSE • EXPLORE THE PORTAL
+    <!-- کریستال -->
+
+    <div class="crystal-area">
+
+
+        <div class="crystal-glow"></div>
+
+
+        <div class="crystal">
+
+
+            <div class="crystal-face front">
+
+                <span>
+                    AYRIK
+                </span>
+
+            </div>
+
+
+            <div class="crystal-face back">
+
+                <span>
+                    DESIGN
+                </span>
+
+            </div>
+
+
+            <div class="crystal-face right"></div>
+
+            <div class="crystal-face left"></div>
+
+            <div class="crystal-face top"></div>
+
+            <div class="crystal-face bottom"></div>
+
+
+        </div>
+
+
+        <div class="crystal-ring ring-one"></div>
+
+        <div class="crystal-ring ring-two"></div>
+
+
     </div>
 
-</div>
 
+</section>
 
-<script type="module">
 
-import * as THREE from
-'https://cdn.jsdelivr.net/npm/three@0.185.0/build/three.module.js';
+<!-- =========================
+SERVICES
+========================= -->
 
-import { OrbitControls } from
-'https://cdn.jsdelivr.net/npm/three@0.185.0/examples/jsm/controls/OrbitControls.js';
+<section id="services">
 
 
-/* =========================
-   SCENE
-========================= */
+    <div class="section-title">
 
-const scene = new THREE.Scene();
+        <h2>
+            خدمات Ayrik Design
+        </h2>
 
-scene.background = new THREE.Color(0x020207);
+        <p>
+            طراحی حرفه‌ای برای برندهایی
+            که معمولی بودن را نمی‌خواهند.
+        </p>
 
-scene.fog = new THREE.FogExp2(
-    0x020207,
-    0.035
-);
+    </div>
 
 
-/* =========================
-   CAMERA
-========================= */
+    <div class="services">
 
-const camera = new THREE.PerspectiveCamera(
-    55,
-    window.innerWidth / window.innerHeight,
-    0.1,
-    100
-);
 
-camera.position.set(
-    0,
-    0,
-    11
-);
+        <div class="card">
 
+            <div class="card-icon">
+                🎨
+            </div>
 
-/* =========================
-   RENDERER
-========================= */
+            <h3>
+                طراحی لوگو
+            </h3>
 
-const renderer = new THREE.WebGLRenderer({
-    antialias: true,
-    alpha: true
-});
+            <p>
+                ساخت هویت بصری اختصاصی
+                برای برند شما.
+            </p>
 
-renderer.setPixelRatio(
-    Math.min(window.devicePixelRatio, 2)
-);
+        </div>
 
-renderer.setSize(
-    window.innerWidth,
-    window.innerHeight
-);
 
-renderer.outputColorSpace =
-    THREE.SRGBColorSpace;
+        <div class="card">
 
-document
-    .getElementById('scene')
-    .appendChild(renderer.domElement);
+            <div class="card-icon">
+                🖼️
+            </div>
 
+            <h3>
+                پوستر تبلیغاتی
+            </h3>
 
-/* =========================
-   CONTROLS
-========================= */
+            <p>
+                طراحی پوسترهای مدرن
+                و چشمگیر.
+            </p>
 
-const controls = new OrbitControls(
-    camera,
-    renderer.domElement
-);
+        </div>
 
-controls.enableDamping = true;
-controls.enablePan = false;
 
-controls.minDistance = 7;
-controls.maxDistance = 15;
+        <div class="card">
 
-controls.autoRotate = true;
-controls.autoRotateSpeed = 0.35;
+            <div class="card-icon">
+                👤
+            </div>
 
-controls.enableZoom = false;
+            <h3>
+                پروفایل
+            </h3>
 
+            <p>
+                طراحی پروفایل حرفه‌ای
+                برای شبکه‌های اجتماعی.
+            </p>
 
-/* =========================
-   LIGHTS
-========================= */
+        </div>
 
-const ambient = new THREE.AmbientLight(
-    0xffffff,
-    0.4
-);
 
-scene.add(ambient);
+        <div class="card">
 
+            <div class="card-icon">
+                💳
+            </div>
 
-const cyanLight = new THREE.PointLight(
-    0x00ddff,
-    18,
-    20
-);
+            <h3>
+                کارت ویزیت
+            </h3>
 
-cyanLight.position.set(
-    -4,
-    2,
-    4
-);
+            <p>
+                طراحی کارت ویزیت خاص
+                و حرفه‌ای.
+            </p>
 
-scene.add(cyanLight);
+        </div>
 
 
-const purpleLight = new THREE.PointLight(
-    0x7b35ff,
-    20,
-    20
-);
+    </div>
 
-purpleLight.position.set(
-    4,
-    -2,
-    3
-);
+</section>
 
-scene.add(purpleLight);
 
+<!-- =========================
+PORTFOLIO
+========================= -->
 
-/* =========================
-   PORTAL GROUP
-========================= */
+<section id="portfolio">
 
-const portal = new THREE.Group();
 
-scene.add(portal);
+    <div class="section-title">
 
+        <h2>
+            نمونه‌کارها
+        </h2>
 
-/* =========================
-   MAIN RINGS
-========================= */
+        <p>
+            بخشی از طراحی‌های Ayrik Design
+        </p>
 
-const ringGeometry =
-    new THREE.TorusGeometry(
-        3.1,
-        0.16,
-        24,
-        128
-    );
-
-
-const ringMaterial =
-    new THREE.MeshStandardMaterial({
-        color: 0x7b3cff,
-        emissive: 0x3c00ff,
-        emissiveIntensity: 5,
-        metalness: 0.7,
-        roughness: 0.2
-    });
+    </div>
 
 
-const mainRing =
-    new THREE.Mesh(
-        ringGeometry,
-        ringMaterial
-    );
+    <div class="portfolio">
 
-portal.add(mainRing);
 
+        <div class="work">
 
-/* SECOND RING */
+            <img
+                src="InShot_20260622_005722322.jpg"
+                alt="پروفایل Ayrik Design"
+            >
 
-const ring2 =
-    new THREE.Mesh(
-        new THREE.TorusGeometry(
-            3.45,
-            0.035,
-            16,
-            128
-        ),
-        new THREE.MeshBasicMaterial({
-            color: 0x00d9ff,
-            transparent: true,
-            opacity: 0.7
-        })
-    );
-
-ring2.rotation.z = Math.PI / 2;
-
-portal.add(ring2);
+            <div class="work-info">
 
+                <h3>
+                    پروفایل اختصاصی
+                </h3>
 
-/* THIRD RING */
-
-const ring3 =
-    new THREE.Mesh(
-        new THREE.TorusGeometry(
-            2.8,
-            0.025,
-            16,
-            128
-        ),
-        new THREE.MeshBasicMaterial({
-            color: 0xffffff,
-            transparent: true,
-            opacity: 0.45
-        })
-    );
+                <p>
+                    طراحی پروفایل
+                </p>
 
-ring3.rotation.x = Math.PI / 2;
+            </div>
 
-portal.add(ring3);
+        </div>
 
 
-/* =========================
-   PORTAL CORE
-========================= */
+        <div class="work">
 
-const core =
-    new THREE.Mesh(
-        new THREE.CircleGeometry(
-            2.85,
-            96
-        ),
-        new THREE.MeshBasicMaterial({
-            color: 0x05000e,
-            transparent: true,
-            opacity: 0.96
-        })
-    );
+            <img
+                src="file_000000004f4c71f498948a6f81ce8327.png"
+                alt="لوگو Ayrik Design"
+            >
 
-core.position.z = -0.12;
+            <div class="work-info">
 
-portal.add(core);
+                <h3>
+                    طراحی لوگو
+                </h3>
 
+                <p>
+                    هویت بصری برند
+                </p>
 
-/* INNER GLOW */
+            </div>
 
-const glow =
-    new THREE.Mesh(
-        new THREE.CircleGeometry(
-            2.55,
-            96
-        ),
-        new THREE.MeshBasicMaterial({
-            color: 0x25005c,
-            transparent: true,
-            opacity: 0.45
-        })
-    );
-
-glow.position.z = -0.1;
-
-portal.add(glow);
-
+        </div>
 
-/* =========================
-   ENERGY LINES
-========================= */
 
-for(let i = 0; i < 12; i++){
+        <div class="work">
 
-    const line =
-        new THREE.Mesh(
-            new THREE.TorusGeometry(
-                2.3 + i * 0.08,
-                0.012,
-                8,
-                80
-            ),
-            new THREE.MeshBasicMaterial({
-                color:
-                    i % 2 === 0
-                    ? 0x00d9ff
-                    : 0x8c42ff,
-                transparent: true,
-                opacity: 0.25
-            })
-        );
-
-    line.position.z =
-        -0.3 - i * 0.03;
-
-    line.rotation.z =
-        i * 0.4;
-
-    portal.add(line);
-}
-
-
-/* =========================
-   PARTICLES
-========================= */
-
-const particleCount = 1600;
-
-const particleGeometry =
-    new THREE.BufferGeometry();
-
-const positions =
-    new Float32Array(
-        particleCount * 3
-    );
-
-for(let i = 0; i < particleCount; i++){
-
-    const radius =
-        4 + Math.random() * 8;
-
-    const angle =
-        Math.random() * Math.PI * 2;
-
-    const x =
-        Math.cos(angle) *
-        radius;
-
-    const y =
-        (Math.random() - 0.5) *
-        12;
-
-    const z =
-        Math.sin(angle) *
-        radius;
-
-    positions[i * 3] = x;
-    positions[i * 3 + 1] = y;
-    positions[i * 3 + 2] = z;
-}
-
-particleGeometry.setAttribute(
-    'position',
-    new THREE.BufferAttribute(
-        positions,
-        3
-    )
-);
-
-const particleMaterial =
-    new THREE.PointsMaterial({
-        color: 0x7deaff,
-        size: 0.025,
-        transparent: true,
-        opacity: 0.8,
-        blending: THREE.AdditiveBlending
-    });
+            <img
+                src="file_00000000e7bc71f88c4c471ce93d9ea0.png"
+                alt="پوستر تبلیغاتی"
+            >
 
-const particles =
-    new THREE.Points(
-        particleGeometry,
-        particleMaterial
-    );
+            <div class="work-info">
 
-scene.add(particles);
-
+                <h3>
+                    پوستر تبلیغاتی
+                </h3>
 
-/* =========================
-   FLOATING CUBES
-========================= */
-
-const cubes = [];
-
-for(let i = 0; i < 22; i++){
-
-    const cube =
-        new THREE.Mesh(
-            new THREE.BoxGeometry(
-                0.12,
-                0.12,
-                0.12
-            ),
-            new THREE.MeshBasicMaterial({
-                color:
-                    i % 2
-                    ? 0x00d9ff
-                    : 0x8b42ff
-            })
-        );
-
-    const angle =
-        Math.random() *
-        Math.PI * 2;
+                <p>
+                    طراحی تبلیغاتی
+                </p>
 
-    const radius =
-        4.5 + Math.random() * 3;
+            </div>
 
-    cube.position.set(
-        Math.cos(angle) * radius,
-        (Math.random() - .5) * 7,
-        Math.sin(angle) * radius
-    );
+        </div>
 
-    cube.rotation.set(
-        Math.random(),
-        Math.random(),
-        Math.random()
-    );
 
-    scene.add(cube);
+        <div class="work">
 
-    cubes.push(cube);
-}
+            <img
+                src="file_00000000f3d8724391ca26af56100069.png"
+                alt="کارت ویزیت"
+            >
 
+            <div class="work-info">
 
-/* =========================
-   MOUSE
-========================= */
+                <h3>
+                    کارت ویزیت
+                </h3>
 
-const mouse = {
-    x: 0,
-    y: 0
-};
+                <p>
+                    طراحی حرفه‌ای
+                </p>
 
-window.addEventListener(
-    'pointermove',
-    event => {
+            </div>
 
-        mouse.x =
-            (event.clientX /
-            window.innerWidth) *
-            2 - 1;
+        </div>
 
-        mouse.y =
-            -(event.clientY /
-            window.innerHeight) *
-            2 + 1;
-    }
-);
 
+    </div>
 
-/* =========================
-   ENTER PORTAL
-========================= */
+</section>
 
-window.enterPortal = function(){
 
-    controls.autoRotate = false;
+<!-- =========================
+INSTAGRAM
+========================= -->
 
-    const start =
-        camera.position.z;
+<section id="social">
 
-    const target = 2.8;
 
-    const startTime =
-        performance.now();
+    <div class="section-title">
 
-    function zoom(){
+        <h2>
+            شبکه‌های اجتماعی
+        </h2>
 
-        const progress =
-            Math.min(
-                (performance.now() -
-                startTime) / 1500,
-                1
-            );
+        <p>
+            جدیدترین پروژه‌ها و فعالیت‌ها
+        </p>
 
-        const ease =
-            1 -
-            Math.pow(
-                1 - progress,
-                3
-            );
+    </div>
 
-        camera.position.z =
-            start +
-            (target - start) *
-            ease;
 
-        if(progress < 1){
+    <div class="social-box">
 
-            requestAnimationFrame(
-                zoom
-            );
 
-        } else {
+        <!-- Ayrik Design -->
 
-            alert(
-                'به پرتال Ayrik Design خوش آمدید 🚀'
-            );
+        <a
+            class="social"
+            href="https://www.instagram.com/ayri.kdesign08/"
+            target="_blank"
+        >
 
-            camera.position.z = 11;
 
-            controls.autoRotate = true;
-        }
-    }
+            <div class="social-top">
 
-    zoom();
-};
 
+                <div class="social-icon">
+                    ◎
+                </div>
 
-/* =========================
-   CARD ACTIONS
-========================= */
 
-window.openSection = function(section){
+                <div class="social-tag">
+                    INSTAGRAM
+                </div>
 
-    if(section === 'design'){
 
-        alert(
-            'بخش طراحی Ayrik Design'
-        );
+            </div>
 
-    }
 
-    if(section === 'ai'){
+            <div class="social-content">
 
-        alert(
-            'MEDO AI 🤖'
-        );
 
-    }
+                <strong>
+                    Ayrik Design
+                </strong>
 
-    if(section === 'order'){
 
-        alert(
-            'بخش سفارش اختصاصی'
-        );
+                <small>
+                    @ayri.kdesign08
+                </small>
 
-    }
-};
 
+                <div class="social-button">
 
-/* =========================
-   ANIMATION
-========================= */
+                    <span>
+                        مشاهده صفحه اینستاگرام
+                    </span>
 
-const clock =
-    new THREE.Clock();
+                    <span>
+                        ←
+                    </span>
 
-function animate(){
+                </div>
 
-    requestAnimationFrame(
-        animate
-    );
 
-    const elapsed =
-        clock.getElapsedTime();
+            </div>
 
 
-    /* Portal */
+        </a>
 
-    mainRing.rotation.z =
-        elapsed * 0.25;
 
-    ring2.rotation.z =
-        elapsed * -0.4;
+        <!-- Medo AI -->
 
-    ring3.rotation.x =
-        elapsed * 0.3;
+        <a
+            class="social"
+            href="https://www.instagram.com/medoai2026/"
+            target="_blank"
+        >
 
 
-    portal.rotation.y +=
-        (mouse.x * 0.18 -
-        portal.rotation.y) *
-        0.025;
+            <div class="social-top">
 
-    portal.rotation.x +=
-        (-mouse.y * 0.12 -
-        portal.rotation.x) *
-        0.025;
 
+                <div
+                    class="social-icon"
+                    style="
+                    background:
+                    linear-gradient(
+                    135deg,
+                    #4c1d95,
+                    #7c3aed,
+                    #06b6d4
+                    );
+                    "
+                >
+                    ✦
+                </div>
 
-    /* Particles */
 
-    particles.rotation.y =
-        elapsed * 0.025;
+                <div class="social-tag">
+                    AI • INSTAGRAM
+                </div>
 
-    particles.rotation.x =
-        Math.sin(elapsed * .15) *
-        .04;
 
+            </div>
 
-    /* Floating cubes */
 
-    cubes.forEach((cube, i) => {
+            <div class="social-content">
 
-        cube.rotation.x +=
-            0.006 + i * 0.0001;
 
-        cube.rotation.y +=
-            0.008;
+                <strong>
+                    Medo AI
+                </strong>
 
-        cube.position.y +=
-            Math.sin(
-                elapsed + i
-            ) * 0.0015;
-    });
 
+                <small>
+                    @medoai2026
+                </small>
 
-    controls.update();
 
-    renderer.render(
-        scene,
-        camera
-    );
-}
+                <div class="social-button">
 
-animate();
+                    <span>
+                        مشاهده صفحه Medo AI
+                    </span>
 
+                    <span>
+                        ←
+                    </span>
 
-/* =========================
-   RESIZE
-========================= */
+                </div>
 
-window.addEventListener(
-    'resize',
-    () => {
 
-        camera.aspect =
-            window.innerWidth /
-            window.innerHeight;
+            </div>
 
-        camera.updateProjectionMatrix();
 
-        renderer.setSize(
-            window.innerWidth,
-            window.innerHeight
-        );
-    }
-);
+        </a>
 
 
-/* =========================
-   REMOVE LOADING
-========================= */
+    </div>
 
-setTimeout(() => {
 
-    const loading =
-        document.getElementById(
-            'loading'
-        );
+</section>
 
-    loading.style.opacity = '0';
 
-    setTimeout(() => {
-        loading.remove();
-    }, 800);
+<!-- =========================
+ORDER
+========================= -->
 
-}, 1000);
+<section>
 
-</script>
+
+    <div class="order">
+
+
+        <h2>
+            ایده‌ات را اجرا کن 🚀
+        </h2>
+
+
+        <p>
+            برای ثبت سفارش سریع وارد ربات Ayrik AI شو.
+        </p>
+
+
+        <a
+            class="btn btn-main"
+            href="https://t.me/Ayrik_Ai09_bot"
+            target="_blank"
+        >
+
+            🤖 ورود به ربات و سفارش
+
+        </a>
+
+
+    </div>
+
+
+</section>
+
+
+<!-- =========================
+FOOTER
+========================= -->
+
+<footer>
+
+    © 2026
+
+    <strong>
+        Ayrik Design
+    </strong>
+
+    | تمامی حقوق محفوظ است.
+
+</footer>
+
 
 </body>
-</html>
-
-چیزی که الان داری
-
-- پرتال کاملاً سه‌بعدی
-- حلقه‌های انرژی متحرک
-- ذرات سه‌بعدی
-- مکعب‌های شناور
-- حرکت پرتال با موس
-- کنترل سه‌بعدی
-- نورپردازی آبی/بنفش
-- کارت‌های شیشه‌ای
-- نسخه مخصوص موبایل
-- دکمه ورود به پرتال
-- ساختار آماده برای وصل کردن صفحات واقعی طراحی، MEDO AI و سفارش
-
-این کد از نسخه یک‌فایلی استفاده می‌کند و Three.js و "OrbitControls" را از یک CDN با نسخه یکسان می‌گیرد، چون مستندات Three.js هم تأکید می‌کنند که addonها مثل OrbitControls باید جداگانه import شوند و بهتر است نسخه‌شان با هسته Three.js یکسان باشد.
+    </html>
