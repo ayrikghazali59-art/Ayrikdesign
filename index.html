@@ -8,9 +8,15 @@
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800;900&display=swap');
 
-*{margin:0;padding:0;box-sizing:border-box}
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
 
-html{scroll-behavior:smooth}
+html{
+scroll-behavior:smooth;
+}
 
 body{
 font-family:'Vazirmatn',sans-serif;
@@ -59,12 +65,29 @@ align-items:center;
 justify-content:space-between;
 }
 
-.logo{font-size:22px;font-weight:900}
-.logo span{color:#ff174f}
+.logo{
+font-size:22px;
+font-weight:900;
+}
 
-.nav-links{display:flex;gap:25px}
-.nav-links a{color:#aaa;text-decoration:none;transition:.3s}
-.nav-links a:hover{color:#fff}
+.logo span{
+color:#ff174f;
+}
+
+.nav-links{
+display:flex;
+gap:25px;
+}
+
+.nav-links a{
+color:#aaa;
+text-decoration:none;
+transition:.3s;
+}
+
+.nav-links a:hover{
+color:#fff;
+}
 
 .hero{
 min-height:100vh;
@@ -176,11 +199,24 @@ backdrop-filter:blur(5px);
 .top{transform:rotateX(90deg) translateZ(70px)}
 .bottom{transform:rotateX(-90deg) translateZ(70px)}
 
-section{padding:100px 6%}
+section{
+padding:100px 6%;
+}
 
-.title{text-align:center;margin-bottom:50px}
-.title h2{font-size:42px;font-weight:900}
-.title p{color:#777;margin-top:12px}
+.title{
+text-align:center;
+margin-bottom:50px;
+}
+
+.title h2{
+font-size:42px;
+font-weight:900;
+}
+
+.title p{
+color:#777;
+margin-top:12px;
+}
 
 .portfolio{
 max-width:1200px;
@@ -226,6 +262,7 @@ right:-50px;
 color:#ff174f;
 font-size:13px;
 margin-bottom:8px;
+position:relative;
 }
 
 .card h3{
@@ -272,9 +309,19 @@ transform:translateY(-8px);
 background:#ffffff0b;
 }
 
-.icon{font-size:35px;margin-bottom:15px}
-.service h3{margin-bottom:10px}
-.service p{color:#777;line-height:1.8}
+.icon{
+font-size:35px;
+margin-bottom:15px;
+}
+
+.service h3{
+margin-bottom:10px;
+}
+
+.service p{
+color:#777;
+line-height:1.8;
+}
 
 .auth-box{
 max-width:450px;
@@ -304,7 +351,9 @@ font-family:inherit;
 outline:none;
 }
 
-.input:focus{border-color:#ff174f88}
+.input:focus{
+border-color:#ff174f88;
+}
 
 .robot{
 display:flex;
@@ -316,9 +365,10 @@ background:#ffffff06;
 border-radius:12px;
 }
 
-.robot input{width:20px;height:20px}
-
-.hidden{display:none}
+.robot input{
+width:20px;
+height:20px;
+}
 
 footer{
 padding:60px 20px;
@@ -327,26 +377,58 @@ border-top:1px solid #ffffff10;
 color:#666;
 }
 
-footer strong{color:#ff174f}
+footer strong{
+color:#ff174f;
+}
 
 @keyframes spin{
-from{transform:rotateX(-15deg) rotateY(0)}
-to{transform:rotateX(-15deg) rotateY(360deg)}
+from{
+transform:rotateX(-15deg) rotateY(0);
+}
+to{
+transform:rotateX(-15deg) rotateY(360deg);
+}
 }
 
 @keyframes float{
-0%,100%{transform:translateY(0)}
-50%{transform:translateY(-10px)}
+0%,100%{
+transform:translateY(0);
+}
+50%{
+transform:translateY(-10px);
+}
 }
 
 @media(max-width:700px){
-.nav-links{display:none}
-nav{width:94%}
-section{padding:80px 5%}
-h1{font-size:55px}
-.hero p{font-size:15px}
-.buttons{flex-direction:column}
-.btn{width:100%}
+
+.nav-links{
+display:none;
+}
+
+nav{
+width:94%;
+}
+
+section{
+padding:80px 5%;
+}
+
+h1{
+font-size:55px;
+}
+
+.hero p{
+font-size:15px;
+}
+
+.buttons{
+flex-direction:column;
+}
+
+.btn{
+width:100%;
+}
+
 }
 </style>
 </head>
@@ -354,6 +436,7 @@ h1{font-size:55px}
 <body>
 
 <nav>
+
 <div class="logo">
 AYRIK<span>DESIGN</span>
 </div>
@@ -364,6 +447,7 @@ AYRIK<span>DESIGN</span>
 <a href="#services">خدمات</a>
 <a href="#account">ورود</a>
 </div>
+
 </nav>
 
 <header class="hero" id="home">
@@ -401,15 +485,18 @@ rel="noopener noreferrer">
 </div>
 
 <div class="cube">
+
 <div class="face front">A</div>
 <div class="face back">D</div>
 <div class="face right">A</div>
 <div class="face left">D</div>
 <div class="face top">✦</div>
 <div class="face bottom">✦</div>
+
 </div>
 
 </div>
+
 </header>
 
 <section id="portfolio">
@@ -428,7 +515,9 @@ rel="noopener noreferrer">
 
 <div class="card">
 
-<img src="InShot_20260622_005722322.jpg" alt="طراحی لوگو">
+<img
+src="file_000000004f4c71f498948a6f81ce8327.png"
+alt="طراحی لوگو">
 
 <div class="card-number">
 01 / LOGO
@@ -446,7 +535,9 @@ rel="noopener noreferrer">
 
 <div class="card">
 
-<img src="file_000000004f4c71f498948a6f81ce8327.png" alt="طراحی پروفایل">
+<img
+src="InShot_20260622_005722322.jpg"
+alt="طراحی پروفایل">
 
 <div class="card-number">
 02 / PROFILE
@@ -464,7 +555,9 @@ rel="noopener noreferrer">
 
 <div class="card">
 
-<img src="file_00000000e7bc71f88c4c471ce93d9ea0.png" alt="پوستر تبلیغاتی">
+<img
+src="file_00000000e7bc71f88c4c471ce93d9ea0.png"
+alt="پوستر تبلیغاتی">
 
 <div class="card-number">
 03 / POSTER
@@ -482,7 +575,9 @@ rel="noopener noreferrer">
 
 <div class="card">
 
-<img src="file_00000000f3d8724391ca26af56100069.png" alt="کارت ویزیت">
+<img
+src="file_00000000f3d8724391ca26af56100069.png"
+alt="کارت ویزیت">
 
 <div class="card-number">
 04 / BUSINESS
@@ -494,24 +589,6 @@ rel="noopener noreferrer">
 
 <p>
 طراحی کارت ویزیت حرفه‌ای و اختصاصی.
-</p>
-
-</div>
-
-<div class="card">
-
-<img src="IMG_20260811_020241_939.jpg" alt="نمونه کار Ayrik Design">
-
-<div class="card-number">
-05 / SPECIAL
-</div>
-
-<h3>
-نمونه‌کار ویژه
-</h3>
-
-<p>
-یکی دیگر از پروژه‌های خلاقانه Ayrik Design.
 </p>
 
 </div>
