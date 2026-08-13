@@ -3,9 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Ayrik Design | Creative Studio</title>
 
 <style>
+
 *{
     margin:0;
     padding:0;
@@ -27,7 +29,6 @@ body{
     overflow-x:hidden;
 }
 
-/* نورهای شناور */
 body::before,
 body::after{
     content:"";
@@ -39,44 +40,58 @@ body::after{
 }
 
 body::before{
-    width:420px;
-    height:420px;
+    width:450px;
+    height:450px;
     background:#702cff;
-    opacity:.16;
+    opacity:.18;
     top:-160px;
     right:-100px;
 }
 
 body::after{
-    width:420px;
-    height:420px;
+    width:450px;
+    height:450px;
     background:#008cff;
-    opacity:.13;
+    opacity:.15;
     bottom:-160px;
     left:-100px;
 }
 
-/* نوار بالا */
+
+/* =========================
+NAVBAR
+========================= */
 
 nav{
     position:sticky;
     top:0;
     z-index:100;
+
     display:flex;
     justify-content:space-between;
     align-items:center;
+
     padding:18px 7%;
-    background:rgba(3,5,13,.7);
+
+    background:rgba(3,5,13,.72);
     backdrop-filter:blur(20px);
+
     border-bottom:1px solid rgba(255,255,255,.08);
 }
 
 .logo{
     font-size:25px;
     font-weight:900;
-    background:linear-gradient(90deg,#a855f7,#00b7ff);
+
+    background:linear-gradient(
+        90deg,
+        #a855f7,
+        #00b7ff
+    );
+
     -webkit-background-clip:text;
     color:transparent;
+
     letter-spacing:1px;
 }
 
@@ -91,14 +106,19 @@ nav a:hover{
     color:#a855f7;
 }
 
-/* HERO */
+
+/* =========================
+HERO
+========================= */
 
 .hero{
     min-height:92vh;
     padding:70px 8%;
+
     display:flex;
     align-items:center;
     justify-content:space-between;
+
     gap:50px;
 }
 
@@ -108,12 +128,18 @@ nav a:hover{
 
 .badge{
     display:inline-block;
+
     padding:8px 14px;
+
     border:1px solid #8b5cf655;
     background:#8b5cf611;
+
     color:#b98aff;
+
     border-radius:50px;
+
     font-size:12px;
+
     margin-bottom:22px;
 }
 
@@ -124,12 +150,14 @@ nav a:hover{
 }
 
 .gradient{
-    background:linear-gradient(
-        90deg,
-        #a855f7,
-        #00aaff,
-        #8b5cf6
-    );
+    background:
+        linear-gradient(
+            90deg,
+            #a855f7,
+            #00aaff,
+            #8b5cf6
+        );
+
     -webkit-background-clip:text;
     color:transparent;
 }
@@ -153,21 +181,28 @@ nav a:hover{
     text-decoration:none;
     font-weight:bold;
     transition:.3s;
+    display:inline-block;
 }
 
 .btn-main{
     color:white;
-    background:linear-gradient(
-        135deg,
-        #7c3aed,
-        #008cff
-    );
-    box-shadow:0 10px 35px #5b21b644;
+
+    background:
+        linear-gradient(
+            135deg,
+            #7c3aed,
+            #008cff
+        );
+
+    box-shadow:
+        0 10px 35px #5b21b644;
 }
 
 .btn-main:hover{
     transform:translateY(-5px);
-    box-shadow:0 15px 45px #008cff44;
+
+    box-shadow:
+        0 15px 45px #008cff55;
 }
 
 .btn-dark{
@@ -180,105 +215,292 @@ nav a:hover{
     background:#ffffff12;
 }
 
+
 /* =========================
-   مکعب سه بعدی
+CRYSTAL
 ========================= */
 
-.cube-area{
-    width:350px;
-    height:350px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    perspective:900px;
-}
+.crystal-area{
+    width:390px;
+    height:430px;
 
-.cube{
-    width:150px;
-    height:150px;
     position:relative;
-    transform-style:preserve-3d;
-    animation:cubeRotate 12s linear infinite;
-}
-
-.face{
-    position:absolute;
-    width:150px;
-    height:150px;
 
     display:flex;
     align-items:center;
     justify-content:center;
 
-    font-size:20px;
-    font-weight:900;
+    perspective:1100px;
+}
+
+.crystal-glow{
+    position:absolute;
+
+    width:240px;
+    height:240px;
+
+    border-radius:50%;
+
+    background:
+        radial-gradient(
+            circle,
+            #8b5cf6,
+            #008cff,
+            transparent 70%
+        );
+
+    filter:blur(60px);
+
+    opacity:.45;
+
+    animation:glowPulse 4s ease-in-out infinite;
+}
+
+@keyframes glowPulse{
+
+    0%,100%{
+        transform:scale(.9);
+        opacity:.35;
+    }
+
+    50%{
+        transform:scale(1.15);
+        opacity:.55;
+    }
+
+}
+
+.crystal{
+    width:180px;
+    height:250px;
+
+    position:relative;
+
+    transform-style:preserve-3d;
+
+    animation:
+        crystalFloat 5s ease-in-out infinite,
+        crystalRotate 14s linear infinite;
+}
+
+.crystal-face{
+    position:absolute;
+
+    width:180px;
+    height:250px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
 
     background:
         linear-gradient(
             135deg,
-            #7c3aedaa,
-            #008cff99
+            rgba(168,85,247,.35),
+            rgba(0,170,255,.28),
+            rgba(255,255,255,.08)
         );
 
-    border:2px solid #ffffff55;
+    border:1px solid rgba(255,255,255,.55);
 
     box-shadow:
-        inset 0 0 35px #ffffff12,
-        0 0 35px #7c3aed33;
+        inset 0 0 35px rgba(255,255,255,.12),
+        0 0 25px rgba(99,102,241,.25);
 
     backdrop-filter:blur(8px);
+
+    overflow:hidden;
 }
 
-.front{
-    transform:translateZ(75px);
+.crystal-face::after{
+    content:"";
+
+    position:absolute;
+
+    width:35%;
+    height:140%;
+
+    top:-20%;
+    left:-70%;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,.45),
+            transparent
+        );
+
+    transform:rotate(25deg);
+
+    animation:
+        crystalShine 4s ease-in-out infinite;
 }
 
-.back{
-    transform:rotateY(180deg) translateZ(75px);
-}
-
-.right{
-    transform:rotateY(90deg) translateZ(75px);
-}
-
-.left{
-    transform:rotateY(-90deg) translateZ(75px);
-}
-
-.top{
-    transform:rotateX(90deg) translateZ(75px);
-}
-
-.bottom{
-    transform:rotateX(-90deg) translateZ(75px);
-}
-
-@keyframes cubeRotate{
+@keyframes crystalShine{
 
     0%{
-        transform:rotateX(-15deg) rotateY(0deg);
+        left:-70%;
+    }
+
+    55%,100%{
+        left:130%;
+    }
+
+}
+
+.crystal-face span{
+
+    font-size:22px;
+    font-weight:900;
+
+    letter-spacing:4px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #ffffff,
+            #b78cff,
+            #55d8ff
+        );
+
+    -webkit-background-clip:text;
+    color:transparent;
+
+    text-shadow:
+        0 0 20px rgba(139,92,246,.7);
+
+    transform:translateZ(10px);
+}
+
+.crystal-face.front{
+    transform:translateZ(90px);
+}
+
+.crystal-face.back{
+    transform:
+        rotateY(180deg)
+        translateZ(90px);
+}
+
+.crystal-face.right{
+    transform:
+        rotateY(90deg)
+        translateZ(90px);
+}
+
+.crystal-face.left{
+    transform:
+        rotateY(-90deg)
+        translateZ(90px);
+}
+
+.crystal-face.top{
+    height:180px;
+
+    transform:
+        rotateX(90deg)
+        translateZ(125px);
+}
+
+.crystal-face.bottom{
+    height:180px;
+
+    transform:
+        rotateX(-90deg)
+        translateZ(125px);
+}
+
+@keyframes crystalRotate{
+
+    0%{
+        transform:
+            rotateX(-8deg)
+            rotateY(0deg);
     }
 
     100%{
-        transform:rotateX(345deg) rotateY(360deg);
+        transform:
+            rotateX(352deg)
+            rotateY(360deg);
     }
+
 }
 
-/* حلقه نور */
+@keyframes crystalFloat{
 
-.cube-area::before{
-    content:"";
+    0%,100%{
+        translate:0 0;
+    }
+
+    50%{
+        translate:0 -22px;
+    }
+
+}
+
+.crystal-ring{
     position:absolute;
-    width:250px;
-    height:250px;
+
     border-radius:50%;
-    background:#7c3aed;
-    filter:blur(100px);
-    opacity:.16;
-    z-index:-1;
+
+    pointer-events:none;
+
+    border:2px solid rgba(100,180,255,.35);
 }
 
-/* بخش‌ها */
+.ring-one{
+    width:310px;
+    height:105px;
+
+    transform:
+        rotateX(68deg)
+        rotateZ(-15deg);
+
+    animation:ringOne 7s linear infinite;
+}
+
+.ring-two{
+    width:285px;
+    height:95px;
+
+    transform:
+        rotateX(68deg)
+        rotateZ(75deg);
+
+    border-color:rgba(168,85,247,.4);
+
+    animation:ringTwo 9s linear infinite;
+}
+
+@keyframes ringOne{
+
+    from{
+        rotate:0deg;
+    }
+
+    to{
+        rotate:360deg;
+    }
+
+}
+
+@keyframes ringTwo{
+
+    from{
+        rotate:360deg;
+    }
+
+    to{
+        rotate:0deg;
+    }
+
+}
+
+
+/* =========================
+GENERAL
+========================= */
 
 section{
     padding:90px 8%;
@@ -298,7 +520,10 @@ section{
     color:#888;
 }
 
-/* خدمات */
+
+/* =========================
+SERVICES
+========================= */
 
 .services{
     display:grid;
@@ -308,17 +533,25 @@ section{
 
 .card{
     padding:30px;
+
     border-radius:25px;
+
     background:#ffffff06;
+
     border:1px solid #ffffff10;
+
     text-align:center;
+
     transition:.35s;
 }
 
 .card:hover{
     transform:translateY(-10px);
+
     border-color:#8b5cf666;
-    box-shadow:0 20px 50px #5b21b622;
+
+    box-shadow:
+        0 20px 50px #5b21b622;
 }
 
 .card-icon{
@@ -335,7 +568,10 @@ section{
     line-height:1.8;
 }
 
-/* نمونه کار */
+
+/* =========================
+PORTFOLIO
+========================= */
 
 .portfolio{
     display:grid;
@@ -345,23 +581,35 @@ section{
 
 .work{
     overflow:hidden;
+
     border-radius:25px;
+
     background:#ffffff06;
+
     border:1px solid #ffffff10;
+
     transition:.35s;
 }
 
 .work:hover{
-    transform:translateY(-10px) scale(1.02);
+    transform:
+        translateY(-10px)
+        scale(1.02);
+
     border-color:#8b5cf677;
-    box-shadow:0 20px 50px #0008;
+
+    box-shadow:
+        0 20px 50px #0008;
 }
 
 .work img{
     width:100%;
     height:240px;
+
     object-fit:cover;
+
     display:block;
+
     transition:.4s;
 }
 
@@ -381,58 +629,329 @@ section{
     color:#888;
 }
 
-/* شبکه اجتماعی */
+
+/* =================================================
+INSTAGRAM
+================================================= */
 
 .social-box{
-    display:flex;
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(2,minmax(280px,380px));
+
     justify-content:center;
-    gap:20px;
-    flex-wrap:wrap;
+
+    gap:28px;
+
 }
 
+
+/* کارت */
+
 .social{
-    width:280px;
+
+    position:relative;
+
+    min-height:210px;
+
     padding:30px;
-    border-radius:25px;
+
+    border-radius:30px;
+
+    overflow:hidden;
+
     color:white;
+
     text-decoration:none;
-    text-align:center;
+
+    text-align:right;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:space-between;
+
     background:
         linear-gradient(
             145deg,
-            #ffffff09,
-            #ffffff03
+            rgba(255,255,255,.12),
+            rgba(255,255,255,.025)
         );
-    border:1px solid #ffffff12;
-    transition:.35s;
+
+    border:1px solid rgba(255,255,255,.14);
+
+    backdrop-filter:blur(20px);
+
+    box-shadow:
+        0 20px 60px rgba(0,0,0,.35);
+
+    transition:
+        transform .45s,
+        border-color .45s,
+        box-shadow .45s;
+
 }
+
+
+/* نور دور کارت */
+
+.social::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:180px;
+    height:180px;
+
+    border-radius:50%;
+
+    top:-90px;
+    right:-60px;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(168,85,247,.5),
+            transparent 70%
+        );
+
+    filter:blur(15px);
+
+    transition:.5s;
+}
+
+
+/* خط نور پایین */
+
+.social::after{
+
+    content:"";
+
+    position:absolute;
+
+    left:10%;
+    right:10%;
+    bottom:0;
+
+    height:2px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            #a855f7,
+            #00b7ff,
+            transparent
+        );
+
+    box-shadow:
+        0 0 18px #8b5cf6;
+
+    opacity:.7;
+}
+
+
+/* Hover */
 
 .social:hover{
-    transform:translateY(-10px);
-    border-color:#8b5cf688;
-    box-shadow:0 20px 50px #5b21b633;
+
+    transform:
+        translateY(-12px)
+        scale(1.025)
+        rotateX(3deg);
+
+    border-color:
+        rgba(168,85,247,.55);
+
+    box-shadow:
+        0 25px 70px rgba(90,40,180,.3),
+        0 0 35px rgba(0,150,255,.12);
+
 }
 
+.social:hover::before{
+
+    transform:
+        scale(1.5);
+
+    opacity:.9;
+}
+
+
+/* بالای کارت */
+
+.social-top{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    position:relative;
+
+    z-index:2;
+}
+
+
+/* آیکون */
+
 .social-icon{
-    font-size:45px;
-    margin-bottom:12px;
+
+    width:65px;
+    height:65px;
+
+    border-radius:20px;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    font-size:34px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #833ab4,
+            #fd1d1d,
+            #fcb045
+        );
+
+    box-shadow:
+        0 0 30px rgba(225,48,108,.3);
+
+    transition:.4s;
+}
+
+.social:hover .social-icon{
+
+    transform:
+        rotate(-8deg)
+        scale(1.1);
+
+    box-shadow:
+        0 0 40px rgba(225,48,108,.5);
+}
+
+
+/* تگ */
+
+.social-tag{
+
+    padding:7px 12px;
+
+    border-radius:50px;
+
+    font-size:10px;
+
+    color:#bbb;
+
+    background:#ffffff0a;
+
+    border:1px solid #ffffff12;
+}
+
+
+/* متن */
+
+.social-content{
+
+    position:relative;
+
+    z-index:2;
+
+    margin-top:25px;
 }
 
 .social strong{
+
     display:block;
-    font-size:19px;
+
+    font-size:24px;
+
     margin-bottom:8px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #fff,
+            #b98aff,
+            #63d8ff
+        );
+
+    -webkit-background-clip:text;
+
+    color:transparent;
 }
 
 .social small{
+
     color:#888;
+
+    font-size:14px;
 }
 
-/* سفارش */
+
+/* دکمه داخل کارت */
+
+.social-button{
+
+    position:relative;
+
+    z-index:2;
+
+    margin-top:22px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    padding:12px 15px;
+
+    border-radius:14px;
+
+    background:#ffffff08;
+
+    border:1px solid #ffffff10;
+
+    color:#ddd;
+
+    font-size:13px;
+}
+
+.social-button span:last-child{
+
+    color:#a855f7;
+
+    font-size:18px;
+
+    transition:.3s;
+}
+
+.social:hover .social-button span:last-child{
+
+    transform:
+        translateX(-6px);
+
+}
+
+
+/* =========================
+ORDER
+========================= */
 
 .order{
     text-align:center;
+
     padding:70px 25px;
+
     border-radius:35px;
 
     background:
@@ -456,20 +975,65 @@ section{
     margin-bottom:30px;
 }
 
-/* فوتر */
+
+/* =========================
+FOOTER
+========================= */
 
 footer{
+
     padding:35px 8%;
+
     text-align:center;
+
     color:#666;
-    border-top:1px solid #ffffff0d;
+
+    border-top:
+        1px solid #ffffff0d;
 }
 
 footer strong{
     color:#a855f7;
 }
 
-/* موبایل */
+
+/* =========================
+ANIMATION
+========================= */
+
+@keyframes fadeUp{
+
+    from{
+        opacity:0;
+
+        transform:
+            translateY(25px);
+    }
+
+    to{
+        opacity:1;
+
+        transform:
+            translateY(0);
+    }
+
+}
+
+.hero-text,
+.crystal-area,
+.card,
+.work,
+.social,
+.order{
+
+    animation:
+        fadeUp .9s ease both;
+}
+
+
+/* =========================
+MOBILE
+========================= */
 
 @media(max-width:1000px){
 
@@ -483,12 +1047,15 @@ footer strong{
     }
 
     .services{
-        grid-template-columns:repeat(2,1fr);
+        grid-template-columns:
+            repeat(2,1fr);
     }
 
     .portfolio{
-        grid-template-columns:repeat(2,1fr);
+        grid-template-columns:
+            repeat(2,1fr);
     }
+
 }
 
 @media(max-width:600px){
@@ -505,9 +1072,53 @@ footer strong{
         font-size:45px;
     }
 
-    .cube-area{
+    .crystal-area{
         width:100%;
-        height:330px;
+        height:380px;
+    }
+
+    .crystal{
+        width:150px;
+        height:220px;
+    }
+
+    .crystal-face{
+        width:150px;
+        height:220px;
+    }
+
+    .crystal-face.front{
+        transform:translateZ(75px);
+    }
+
+    .crystal-face.back{
+        transform:
+            rotateY(180deg)
+            translateZ(75px);
+    }
+
+    .crystal-face.right{
+        transform:
+            rotateY(90deg)
+            translateZ(75px);
+    }
+
+    .crystal-face.left{
+        transform:
+            rotateY(-90deg)
+            translateZ(75px);
+    }
+
+    .crystal-face.top{
+        transform:
+            rotateX(90deg)
+            translateZ(110px);
+    }
+
+    .crystal-face.bottom{
+        transform:
+            rotateX(-90deg)
+            translateZ(110px);
     }
 
     .services{
@@ -518,6 +1129,14 @@ footer strong{
         grid-template-columns:1fr;
     }
 
+    .social-box{
+        grid-template-columns:1fr;
+    }
+
+    .social{
+        min-height:200px;
+    }
+
     .section-title h2{
         font-size:32px;
     }
@@ -525,11 +1144,20 @@ footer strong{
     .order h2{
         font-size:32px;
     }
+
 }
+
 </style>
+
 </head>
 
+
 <body>
+
+
+<!-- =========================
+NAVBAR
+========================= -->
 
 <nav>
 
@@ -539,25 +1167,41 @@ footer strong{
 
     <div class="links">
 
-        <a href="#home">خانه</a>
-        <a href="#services">خدمات</a>
-        <a href="#portfolio">نمونه‌کارها</a>
-        <a href="#social">اینستاگرام</a>
+        <a href="#home">
+            خانه
+        </a>
+
+        <a href="#services">
+            خدمات
+        </a>
+
+        <a href="#portfolio">
+            نمونه‌کارها
+        </a>
+
+        <a href="#social">
+            اینستاگرام
+        </a>
 
     </div>
 
 </nav>
 
 
-<!-- HERO -->
+<!-- =========================
+HERO
+========================= -->
 
 <section class="hero" id="home">
 
+
     <div class="hero-text">
+
 
         <div class="badge">
             CREATIVE STUDIO • 2026
         </div>
+
 
         <h1>
 
@@ -569,6 +1213,7 @@ footer strong{
 
         </h1>
 
+
         <p>
 
             جایی برای طراحی‌های خاص،
@@ -577,7 +1222,9 @@ footer strong{
 
         </p>
 
+
         <div class="buttons">
+
 
             <a
                 class="btn btn-main"
@@ -587,6 +1234,7 @@ footer strong{
                 🤖 سفارش از ربات
             </a>
 
+
             <a
                 class="btn btn-dark"
                 href="#portfolio"
@@ -594,51 +1242,71 @@ footer strong{
                 🖼️ مشاهده نمونه‌کارها
             </a>
 
+
         </div>
+
 
     </div>
 
 
-    <!-- مکعب -->
+    <!-- کریستال -->
 
-    <div class="cube-area">
+    <div class="crystal-area">
 
-        <div class="cube">
 
-            <div class="face front">
-                AYRIK
+        <div class="crystal-glow"></div>
+
+
+        <div class="crystal">
+
+
+            <div class="crystal-face front">
+
+                <span>
+                    AYRIK
+                </span>
+
             </div>
 
-            <div class="face back">
-                DESIGN
+
+            <div class="crystal-face back">
+
+                <span>
+                    DESIGN
+                </span>
+
             </div>
 
-            <div class="face right">
-                ✦
-            </div>
 
-            <div class="face left">
-                AYRIK
-            </div>
+            <div class="crystal-face right"></div>
 
-            <div class="face top">
-                AI
-            </div>
+            <div class="crystal-face left"></div>
 
-            <div class="face bottom">
-                2026
-            </div>
+            <div class="crystal-face top"></div>
+
+            <div class="crystal-face bottom"></div>
+
 
         </div>
 
+
+        <div class="crystal-ring ring-one"></div>
+
+        <div class="crystal-ring ring-two"></div>
+
+
     </div>
+
 
 </section>
 
 
-<!-- خدمات -->
+<!-- =========================
+SERVICES
+========================= -->
 
 <section id="services">
+
 
     <div class="section-title">
 
@@ -647,7 +1315,8 @@ footer strong{
         </h2>
 
         <p>
-            طراحی حرفه‌ای برای برندهایی که معمولی بودن را نمی‌خواهند.
+            طراحی حرفه‌ای برای برندهایی
+            که معمولی بودن را نمی‌خواهند.
         </p>
 
     </div>
@@ -655,14 +1324,20 @@ footer strong{
 
     <div class="services">
 
+
         <div class="card">
 
-            <div class="card-icon">🎨</div>
+            <div class="card-icon">
+                🎨
+            </div>
 
-            <h3>طراحی لوگو</h3>
+            <h3>
+                طراحی لوگو
+            </h3>
 
             <p>
-                ساخت هویت بصری اختصاصی برای برند شما.
+                ساخت هویت بصری اختصاصی
+                برای برند شما.
             </p>
 
         </div>
@@ -670,12 +1345,17 @@ footer strong{
 
         <div class="card">
 
-            <div class="card-icon">🖼️</div>
+            <div class="card-icon">
+                🖼️
+            </div>
 
-            <h3>پوستر تبلیغاتی</h3>
+            <h3>
+                پوستر تبلیغاتی
+            </h3>
 
             <p>
-                طراحی پوسترهای مدرن و چشمگیر.
+                طراحی پوسترهای مدرن
+                و چشمگیر.
             </p>
 
         </div>
@@ -683,12 +1363,17 @@ footer strong{
 
         <div class="card">
 
-            <div class="card-icon">👤</div>
+            <div class="card-icon">
+                👤
+            </div>
 
-            <h3>پروفایل</h3>
+            <h3>
+                پروفایل
+            </h3>
 
             <p>
-                طراحی پروفایل حرفه‌ای برای شبکه‌های اجتماعی.
+                طراحی پروفایل حرفه‌ای
+                برای شبکه‌های اجتماعی.
             </p>
 
         </div>
@@ -696,24 +1381,33 @@ footer strong{
 
         <div class="card">
 
-            <div class="card-icon">💳</div>
+            <div class="card-icon">
+                💳
+            </div>
 
-            <h3>کارت ویزیت</h3>
+            <h3>
+                کارت ویزیت
+            </h3>
 
             <p>
-                طراحی کارت ویزیت خاص و حرفه‌ای.
+                طراحی کارت ویزیت خاص
+                و حرفه‌ای.
             </p>
 
         </div>
+
 
     </div>
 
 </section>
 
 
-<!-- نمونه کارها -->
+<!-- =========================
+PORTFOLIO
+========================= -->
 
 <section id="portfolio">
+
 
     <div class="section-title">
 
@@ -730,8 +1424,6 @@ footer strong{
 
     <div class="portfolio">
 
-
-        <!-- پروفایل -->
 
         <div class="work">
 
@@ -755,8 +1447,6 @@ footer strong{
         </div>
 
 
-        <!-- لوگو -->
-
         <div class="work">
 
             <img
@@ -778,8 +1468,6 @@ footer strong{
 
         </div>
 
-
-        <!-- پوستر -->
 
         <div class="work">
 
@@ -803,8 +1491,6 @@ footer strong{
         </div>
 
 
-        <!-- کارت ویزیت -->
-
         <div class="work">
 
             <img
@@ -826,14 +1512,18 @@ footer strong{
 
         </div>
 
+
     </div>
 
 </section>
 
 
-<!-- اینستاگرام -->
+<!-- =========================
+INSTAGRAM
+========================= -->
 
 <section id="social">
+
 
     <div class="section-title">
 
@@ -842,7 +1532,7 @@ footer strong{
         </h2>
 
         <p>
-            جدیدترین پروژه‌ها را دنبال کن.
+            جدیدترین پروژه‌ها و فعالیت‌ها
         </p>
 
     </div>
@@ -851,26 +1541,64 @@ footer strong{
     <div class="social-box">
 
 
+        <!-- Ayrik Design -->
+
         <a
             class="social"
             href="https://www.instagram.com/ayri.kdesign08/"
             target="_blank"
         >
 
-            <div class="social-icon">
-                📸
+
+            <div class="social-top">
+
+
+                <div class="social-icon">
+                    ◎
+                </div>
+
+
+                <div class="social-tag">
+                    INSTAGRAM
+                </div>
+
+
             </div>
 
-            <strong>
-                Ayrik Design
-            </strong>
 
-            <small>
-                @ayri.kdesign08
-            </small>
+            <div class="social-content">
+
+
+                <strong>
+                    Ayrik Design
+                </strong>
+
+
+                <small>
+                    @ayri.kdesign08
+                </small>
+
+
+                <div class="social-button">
+
+                    <span>
+                        مشاهده صفحه اینستاگرام
+                    </span>
+
+                    <span>
+                        ←
+                    </span>
+
+                </div>
+
+
+            </div>
+
 
         </a>
 
+
+        <!-- Medo AI -->
 
         <a
             class="social"
@@ -878,51 +1606,112 @@ footer strong{
             target="_blank"
         >
 
-            <div class="social-icon">
-                🤖
+
+            <div class="social-top">
+
+
+                <div
+                    class="social-icon"
+                    style="
+                    background:
+                    linear-gradient(
+                    135deg,
+                    #4c1d95,
+                    #7c3aed,
+                    #06b6d4
+                    );
+                    "
+                >
+                    ✦
+                </div>
+
+
+                <div class="social-tag">
+                    AI • INSTAGRAM
+                </div>
+
+
             </div>
 
-            <strong>
-                Medo AI
-            </strong>
 
-            <small>
-                @medoai2026
-            </small>
+            <div class="social-content">
+
+
+                <strong>
+                    Medo AI
+                </strong>
+
+
+                <small>
+                    @medoai2026
+                </small>
+
+
+                <div class="social-button">
+
+                    <span>
+                        مشاهده صفحه Medo AI
+                    </span>
+
+                    <span>
+                        ←
+                    </span>
+
+                </div>
+
+
+            </div>
+
 
         </a>
 
+
     </div>
+
 
 </section>
 
 
-<!-- سفارش -->
+<!-- =========================
+ORDER
+========================= -->
 
 <section>
 
+
     <div class="order">
+
 
         <h2>
             ایده‌ات را اجرا کن 🚀
         </h2>
 
+
         <p>
             برای ثبت سفارش سریع وارد ربات Ayrik AI شو.
         </p>
+
 
         <a
             class="btn btn-main"
             href="https://t.me/Ayrik_Ai09_bot"
             target="_blank"
         >
+
             🤖 ورود به ربات و سفارش
+
         </a>
+
 
     </div>
 
+
 </section>
 
+
+<!-- =========================
+FOOTER
+========================= -->
 
 <footer>
 
@@ -935,6 +1724,7 @@ footer strong{
     | تمامی حقوق محفوظ است.
 
 </footer>
+
 
 </body>
     </html>
