@@ -2,809 +2,1146 @@
 <html lang="fa" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Ayrik Design | طراحی حرفه‌ای</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Ayrik Design</title>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800;900&display=swap');
-
 *{
-margin:0;
-padding:0;
-box-sizing:border-box;
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Tahoma,Arial,sans-serif;
 }
 
 html{
-scroll-behavior:smooth;
+    scroll-behavior:smooth;
 }
 
 body{
-font-family:'Vazirmatn',sans-serif;
-background:#050505;
-color:#fff;
-overflow-x:hidden;
+    background:#07080d;
+    color:white;
+    overflow-x:hidden;
 }
 
-body:before{
-content:"";
-position:fixed;
-width:500px;
-height:500px;
-top:-180px;
-right:-150px;
-background:radial-gradient(circle,#ff174f55,transparent 65%);
-z-index:-2;
+/* نورهای پس زمینه */
+body::before{
+    content:"";
+    position:fixed;
+    width:450px;
+    height:450px;
+    background:#6d28d9;
+    opacity:.13;
+    filter:blur(130px);
+    top:-150px;
+    right:-150px;
+    z-index:-1;
 }
 
-body:after{
-content:"";
-position:fixed;
-width:500px;
-height:500px;
-bottom:-200px;
-left:-150px;
-background:radial-gradient(circle,#7200ff44,transparent 65%);
-z-index:-2;
+body::after{
+    content:"";
+    position:fixed;
+    width:400px;
+    height:400px;
+    background:#0099ff;
+    opacity:.10;
+    filter:blur(130px);
+    bottom:-150px;
+    left:-150px;
+    z-index:-1;
 }
 
+/* منو */
 nav{
-position:fixed;
-top:15px;
-left:50%;
-transform:translateX(-50%);
-width:92%;
-max-width:1150px;
-padding:15px 20px;
-background:#101010dd;
-border:1px solid #ffffff18;
-border-radius:20px;
-backdrop-filter:blur(20px);
-z-index:999;
-display:flex;
-align-items:center;
-justify-content:space-between;
+    position:sticky;
+    top:0;
+    z-index:100;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:18px 7%;
+    background:rgba(7,8,13,.75);
+    backdrop-filter:blur(18px);
+    border-bottom:1px solid rgba(255,255,255,.08);
 }
 
 .logo{
-font-size:22px;
-font-weight:900;
+    font-size:24px;
+    font-weight:900;
+    background:linear-gradient(90deg,#9b5cff,#00d9ff);
+    -webkit-background-clip:text;
+    color:transparent;
 }
 
-.logo span{
-color:#ff174f;
+nav a{
+    color:#ddd;
+    text-decoration:none;
+    margin-right:20px;
+    transition:.3s;
 }
 
-.nav-links{
-display:flex;
-gap:25px;
+nav a:hover{
+    color:#a66cff;
 }
 
-.nav-links a{
-color:#aaa;
-text-decoration:none;
-transition:.3s;
-}
-
-.nav-links a:hover{
-color:#fff;
-}
-
+/* هیرو */
 .hero{
-min-height:100vh;
-display:flex;
-align-items:center;
-justify-content:center;
-text-align:center;
-padding:130px 20px 80px;
-perspective:1200px;
+    min-height:90vh;
+    padding:70px 8%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:40px;
 }
 
-.hero-content{
-max-width:900px;
-animation:float 5s ease-in-out infinite;
+.hero-text{
+    max-width:650px;
 }
 
-.badge{
-display:inline-block;
-padding:8px 18px;
-border:1px solid #ff174f55;
-border-radius:50px;
-color:#ff5275;
-background:#ff174f0c;
-margin-bottom:25px;
-}
-
-h1{
-font-size:clamp(55px,10vw,110px);
-font-weight:900;
-line-height:.95;
+.hero h1{
+    font-size:clamp(45px,7vw,78px);
+    line-height:1.15;
+    margin-bottom:25px;
 }
 
 .gradient{
-background:linear-gradient(90deg,#fff,#ff174f,#8b00ff);
--webkit-background-clip:text;
-color:transparent;
+    background:linear-gradient(90deg,#9b5cff,#00d9ff);
+    -webkit-background-clip:text;
+    color:transparent;
 }
 
 .hero p{
-max-width:650px;
-margin:30px auto;
-color:#999;
-line-height:2;
-font-size:17px;
+    color:#aaa;
+    line-height:2;
+    font-size:18px;
+    margin-bottom:30px;
 }
 
 .buttons{
-display:flex;
-justify-content:center;
-gap:15px;
-flex-wrap:wrap;
+    display:flex;
+    gap:15px;
+    flex-wrap:wrap;
 }
 
 .btn{
-display:inline-block;
-padding:15px 28px;
-border-radius:15px;
-text-decoration:none;
-font-weight:800;
-transition:.3s;
-cursor:pointer;
-border:none;
-font-family:inherit;
+    padding:14px 24px;
+    border-radius:15px;
+    text-decoration:none;
+    font-weight:bold;
+    transition:.3s;
+    display:inline-block;
 }
 
-.primary{
-color:#fff;
-background:linear-gradient(135deg,#ff174f,#7900ff);
-box-shadow:0 15px 40px #ff174f33;
+.btn-main{
+    background:linear-gradient(135deg,#7c3aed,#009dff);
+    color:white;
+    box-shadow:0 10px 30px rgba(124,58,237,.3);
 }
 
-.telegram{
-color:#fff;
-background:linear-gradient(135deg,#0088cc,#0066aa);
-box-shadow:0 15px 40px #0088cc33;
+.btn-main:hover{
+    transform:translateY(-4px);
 }
 
-.btn:hover{
-transform:translateY(-6px) scale(1.03);
+.btn-dark{
+    color:white;
+    background:rgba(255,255,255,.05);
+    border:1px solid rgba(255,255,255,.12);
 }
 
-.cube{
-width:140px;
-height:140px;
-margin:80px auto 0;
-position:relative;
-transform-style:preserve-3d;
-animation:spin 12s linear infinite;
+.btn-dark:hover{
+    background:rgba(255,255,255,.1);
 }
 
-.face{
-position:absolute;
-width:140px;
-height:140px;
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:35px;
-font-weight:900;
-border:1px solid #ffffff25;
-background:linear-gradient(135deg,#ff174f44,#7000ff44);
-backdrop-filter:blur(5px);
+/* =====================================
+   ساعت سه بعدی قابل چرخش
+===================================== */
+
+.watch-area{
+    width:360px;
+    height:440px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    /* اجازه حرکت لمسی */
+    touch-action:none;
+
+    perspective:1100px;
+    cursor:grab;
 }
 
-.front{transform:translateZ(70px)}
-.back{transform:rotateY(180deg) translateZ(70px)}
-.right{transform:rotateY(90deg) translateZ(70px)}
-.left{transform:rotateY(-90deg) translateZ(70px)}
-.top{transform:rotateX(90deg) translateZ(70px)}
-.bottom{transform:rotateX(-90deg) translateZ(70px)}
+.watch-area:active{
+    cursor:grabbing;
+}
 
+.watch{
+    width:190px;
+    height:250px;
+
+    position:relative;
+
+    transform-style:preserve-3d;
+
+    transform:
+        rotateX(-8deg)
+        rotateY(18deg);
+
+    transition:transform .12s ease-out;
+
+    user-select:none;
+}
+
+/* بدنه ساعت */
+.watch-body{
+    position:absolute;
+
+    width:190px;
+    height:250px;
+
+    border-radius:45px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #343846,
+            #090b11
+        );
+
+    border:5px solid #454a5c;
+
+    box-shadow:
+        0 35px 80px rgba(0,0,0,.75),
+        inset 5px 5px 15px rgba(255,255,255,.08);
+
+    transform:translateZ(30px);
+}
+
+/* صفحه */
+.watch-screen{
+    position:absolute;
+
+    width:158px;
+    height:210px;
+
+    top:15px;
+    left:11px;
+
+    border-radius:33px;
+
+    background:
+        radial-gradient(
+            circle at 30% 25%,
+            #8b5cf6,
+            transparent 30%
+        ),
+        linear-gradient(
+            145deg,
+            #071521,
+            #020407
+        );
+
+    border:3px solid #030509;
+
+    box-shadow:
+        inset 0 0 30px rgba(0,217,255,.15);
+
+    overflow:hidden;
+}
+
+/* نوشته ساعت */
+.watch-brand{
+    position:absolute;
+    top:28px;
+    width:100%;
+    text-align:center;
+
+    font-size:15px;
+    font-weight:bold;
+
+    letter-spacing:3px;
+}
+
+.watch-design{
+    position:absolute;
+    top:52px;
+    width:100%;
+    text-align:center;
+
+    color:#00d9ff;
+
+    font-size:9px;
+    letter-spacing:3px;
+}
+
+.clock{
+    position:absolute;
+    top:85px;
+    width:100%;
+
+    text-align:center;
+
+    font-size:30px;
+    font-weight:bold;
+}
+
+/* دکمه کنار ساعت */
+.watch-button{
+    position:absolute;
+
+    right:-15px;
+    top:70px;
+
+    width:15px;
+    height:55px;
+
+    border-radius:0 8px 8px 0;
+
+    background:#555b6d;
+
+    transform:translateZ(10px);
+}
+
+/* بند بالا */
+.strap-top,
+.strap-bottom{
+    position:absolute;
+
+    width:115px;
+    height:105px;
+
+    left:38px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #10131b,
+            #2a2e3c
+        );
+
+    border-radius:30px;
+
+    z-index:-1;
+}
+
+.strap-top{
+    top:-90px;
+}
+
+.strap-bottom{
+    bottom:-90px;
+}
+
+/* نور روی ساعت */
+.watch-light{
+    position:absolute;
+
+    width:280px;
+    height:280px;
+
+    border-radius:50%;
+
+    background:#7c3aed;
+
+    filter:blur(100px);
+
+    opacity:.16;
+
+    z-index:-5;
+}
+
+/* بخش ها */
 section{
-padding:100px 6%;
+    padding:90px 8%;
 }
 
-.title{
-text-align:center;
-margin-bottom:50px;
+.section-title{
+    text-align:center;
+    margin-bottom:50px;
 }
 
-.title h2{
-font-size:42px;
-font-weight:900;
+.section-title h2{
+    font-size:40px;
+    margin-bottom:12px;
 }
 
-.title p{
-color:#777;
-margin-top:12px;
+.section-title p{
+    color:#999;
 }
 
-.portfolio{
-max-width:1200px;
-margin:auto;
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:25px;
+/* خدمات */
+.services{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:20px;
 }
 
 .card{
-min-height:300px;
-padding:25px;
-border-radius:25px;
-border:1px solid #ffffff12;
-background:linear-gradient(145deg,#151515,#080808);
-position:relative;
-overflow:hidden;
-transition:.4s;
-display:flex;
-flex-direction:column;
-justify-content:flex-end;
+    padding:30px;
+
+    border-radius:24px;
+
+    background:rgba(255,255,255,.045);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    text-align:center;
+
+    transition:.3s;
 }
 
 .card:hover{
-transform:perspective(900px) rotateX(5deg) rotateY(-5deg) translateY(-12px);
-border-color:#ff174f55;
-box-shadow:0 25px 60px #000;
+    transform:translateY(-8px);
+
+    border-color:#8b5cf6;
+
+    background:rgba(255,255,255,.07);
 }
 
-.card:before{
-content:"";
-position:absolute;
-width:180px;
-height:180px;
-background:#ff174f;
-filter:blur(90px);
-opacity:.15;
-top:-50px;
-right:-50px;
-}
-
-.card-number{
-color:#ff174f;
-font-size:13px;
-margin-bottom:8px;
-position:relative;
+.card-icon{
+    font-size:40px;
+    margin-bottom:18px;
 }
 
 .card h3{
-font-size:24px;
-margin-bottom:8px;
-position:relative;
+    margin-bottom:12px;
 }
 
 .card p{
-color:#888;
-line-height:1.8;
-position:relative;
+    color:#999;
+    line-height:1.8;
 }
 
-.card img{
-width:100%;
-height:180px;
-object-fit:cover;
-border-radius:15px;
-margin-bottom:20px;
-display:block;
-position:relative;
-z-index:1;
+/* نمونه کار */
+.portfolio{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:25px;
 }
 
-.services{
-max-width:1100px;
-margin:auto;
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-gap:20px;
+.work{
+    min-height:230px;
+
+    border-radius:25px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #171a25,
+            #080a10
+        );
+
+    border:1px solid rgba(255,255,255,.08);
+
+    overflow:hidden;
+
+    transition:.3s;
 }
 
-.service{
-padding:30px;
-border:1px solid #ffffff12;
-background:#ffffff06;
-border-radius:22px;
-transition:.3s;
+.work:hover{
+    transform:translateY(-8px);
+    border-color:#8b5cf6;
 }
 
-.service:hover{
-transform:translateY(-8px);
-background:#ffffff0b;
+.work img{
+    width:100%;
+    height:230px;
+
+    object-fit:cover;
+
+    display:block;
 }
 
-.icon{
-font-size:35px;
-margin-bottom:15px;
+.work-info{
+    padding:18px;
 }
 
-.service h3{
-margin-bottom:10px;
+.work-info p{
+    color:#999;
+    margin-top:7px;
 }
 
-.service p{
-color:#777;
-line-height:1.8;
+/* شبکه اجتماعی */
+.social-box{
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    flex-wrap:wrap;
 }
 
-.auth-box{
-max-width:450px;
-margin:auto;
-padding:30px;
-border-radius:25px;
-border:1px solid #ffffff15;
-background:#ffffff08;
-backdrop-filter:blur(20px);
+.social{
+    width:270px;
+
+    padding:28px;
+
+    border-radius:25px;
+
+    text-decoration:none;
+    color:white;
+
+    text-align:center;
+
+    background:rgba(255,255,255,.045);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    transition:.3s;
 }
 
-.auth-box h3{
-font-size:28px;
-margin-bottom:20px;
-text-align:center;
+.social:hover{
+    transform:translateY(-8px);
+    border-color:#8b5cf6;
 }
 
-.input{
-width:100%;
-padding:14px;
-margin:8px 0;
-border:1px solid #ffffff18;
-border-radius:12px;
-background:#080808;
-color:#fff;
-font-family:inherit;
-outline:none;
+.social-icon{
+    font-size:40px;
+    margin-bottom:12px;
 }
 
-.input:focus{
-border-color:#ff174f88;
+.social strong{
+    display:block;
+    font-size:18px;
+    margin-bottom:7px;
 }
 
-.robot{
-display:flex;
-align-items:center;
-gap:10px;
-margin:15px 0;
-padding:12px;
-background:#ffffff06;
-border-radius:12px;
+.social small{
+    color:#999;
 }
 
-.robot input{
-width:20px;
-height:20px;
+/* سفارش */
+.order{
+    text-align:center;
+
+    padding:65px 25px;
+
+    border-radius:35px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(124,58,237,.16),
+            rgba(0,217,255,.08)
+        );
+
+    border:1px solid rgba(155,92,255,.2);
 }
 
+.order h2{
+    font-size:40px;
+    margin-bottom:15px;
+}
+
+.order p{
+    color:#aaa;
+    margin-bottom:30px;
+}
+
+/* فوتر */
 footer{
-padding:60px 20px;
-text-align:center;
-border-top:1px solid #ffffff10;
-color:#666;
+    padding:35px 8%;
+
+    text-align:center;
+
+    color:#777;
+
+    border-top:1px solid rgba(255,255,255,.08);
 }
 
 footer strong{
-color:#ff174f;
+    color:#9b5cff;
 }
 
-@keyframes spin{
-from{
-transform:rotateX(-15deg) rotateY(0);
-}
-to{
-transform:rotateX(-15deg) rotateY(360deg);
-}
+/* موبایل */
+@media(max-width:900px){
+
+    .hero{
+        flex-direction:column;
+        text-align:center;
+    }
+
+    .buttons{
+        justify-content:center;
+    }
+
+    .services{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .portfolio{
+        grid-template-columns:repeat(2,1fr);
+    }
 }
 
-@keyframes float{
-0%,100%{
-transform:translateY(0);
-}
-50%{
-transform:translateY(-10px);
-}
-}
+@media(max-width:600px){
 
-@media(max-width:700px){
+    nav .links{
+        display:none;
+    }
 
-.nav-links{
-display:none;
-}
+    .hero{
+        padding:55px 5%;
+    }
 
-nav{
-width:94%;
-}
+    .hero h1{
+        font-size:44px;
+    }
 
-section{
-padding:80px 5%;
-}
+    .watch-area{
+        width:100%;
+        height:390px;
+    }
 
-h1{
-font-size:55px;
-}
+    .services{
+        grid-template-columns:1fr;
+    }
 
-.hero p{
-font-size:15px;
-}
+    .portfolio{
+        grid-template-columns:1fr;
+    }
 
-.buttons{
-flex-direction:column;
-}
+    .section-title h2{
+        font-size:32px;
+    }
 
-.btn{
-width:100%;
-}
-
+    .order h2{
+        font-size:32px;
+    }
 }
 </style>
 </head>
 
 <body>
 
+<!-- منو -->
 <nav>
 
-<div class="logo">
-AYRIK<span>DESIGN</span>
-</div>
+    <div class="logo">
+        AYRIK DESIGN
+    </div>
 
-<div class="nav-links">
-<a href="#home">خانه</a>
-<a href="#portfolio">نمونه‌کارها</a>
-<a href="#services">خدمات</a>
-<a href="#account">ورود</a>
-</div>
+    <div class="links">
+
+        <a href="#home">خانه</a>
+
+        <a href="#services">خدمات</a>
+
+        <a href="#portfolio">نمونه‌کارها</a>
+
+        <a href="#social">شبکه‌های اجتماعی</a>
+
+    </div>
 
 </nav>
 
-<header class="hero" id="home">
 
-<div class="hero-content">
+<!-- صفحه اصلی -->
+<section class="hero" id="home">
 
-<div class="badge">
-✦ استودیو خلاق Ayrik Design
-</div>
+    <div class="hero-text">
 
-<h1>
-AYRIK<br>
-<span class="gradient">DESIGN</span>
-</h1>
+        <h1>
+            طراحی متفاوت با
+            <span class="gradient">
+                Ayrik Design
+            </span>
+        </h1>
 
-<p>
-اینجا جایی است که ایده‌ها به طراحی حرفه‌ای تبدیل می‌شوند.
-لوگو، پروفایل، پوستر، کارت ویزیت و طراحی اختصاصی.
-</p>
+        <p>
+            طراحی لوگو، پروفایل، پوستر، کارت ویزیت
+            و آثار گرافیکی حرفه‌ای برای برندها و کسب‌وکارها.
+        </p>
 
-<div class="buttons">
+        <div class="buttons">
 
-<a class="btn primary" href="#portfolio">
-🖼️ مشاهده نمونه‌کارها
-</a>
+            <a
+                class="btn btn-main"
+                href="https://t.me/Ayrik_Ai09_bot"
+                target="_blank"
+            >
+                🤖 سفارش از ربات
+            </a>
 
-<a
-class="btn telegram"
-href="https://t.me/Ayrik_Ai09_bot"
-target="_blank"
-rel="noopener noreferrer">
-🤖 ورود به ربات و ثبت سفارش
-</a>
+            <a
+                class="btn btn-dark"
+                href="#portfolio"
+            >
+                🖼️ دیدن نمونه‌کارها
+            </a>
 
-</div>
+        </div>
 
-<div class="cube">
+    </div>
 
-<div class="face front">A</div>
-<div class="face back">D</div>
-<div class="face right">A</div>
-<div class="face left">D</div>
-<div class="face top">✦</div>
-<div class="face bottom">✦</div>
 
-</div>
+    <!-- ساعت -->
+    <div
+        class="watch-area"
+        id="watchArea"
+    >
 
-</div>
+        <div class="watch-light"></div>
 
-</header>
+        <div
+            class="watch"
+            id="watch"
+        >
 
-<section id="portfolio">
+            <div class="strap-top"></div>
 
-<div class="title">
+            <div class="watch-body">
 
-<h2>نمونه‌کارها</h2>
+                <div class="watch-screen">
 
-<p>
-برخی از پروژه‌های Ayrik Design
-</p>
+                    <div class="watch-brand">
+                        AYRIK
+                    </div>
 
-</div>
+                    <div class="watch-design">
+                        DESIGN
+                    </div>
 
-<div class="portfolio" id="portfolioList">
+                    <div
+                        class="clock"
+                        id="clock"
+                    >
+                        00:00
+                    </div>
 
-<div class="card">
+                </div>
 
-<img
-src="file_000000004f4c71f498948a6f81ce8327.png"
-alt="طراحی لوگو">
+                <div class="watch-button"></div>
 
-<div class="card-number">
-01 / LOGO
-</div>
+            </div>
 
-<h3>
-طراحی لوگو
-</h3>
+            <div class="strap-bottom"></div>
 
-<p>
-طراحی هویت بصری اختصاصی و مدرن برای برندها.
-</p>
+        </div>
 
-</div>
-
-<div class="card">
-
-<img
-src="InShot_20260622_005722322.jpg"
-alt="طراحی پروفایل">
-
-<div class="card-number">
-02 / PROFILE
-</div>
-
-<h3>
-طراحی پروفایل
-</h3>
-
-<p>
-پروفایل حرفه‌ای برای شبکه‌های اجتماعی.
-</p>
-
-</div>
-
-<div class="card">
-
-<img
-src="file_00000000e7bc71f88c4c471ce93d9ea0.png"
-alt="پوستر تبلیغاتی">
-
-<div class="card-number">
-03 / POSTER
-</div>
-
-<h3>
-پوستر تبلیغاتی
-</h3>
-
-<p>
-پوسترهای جذاب برای معرفی محصولات و خدمات.
-</p>
-
-</div>
-
-<div class="card">
-
-<img
-src="file_00000000f3d8724391ca26af56100069.png"
-alt="کارت ویزیت">
-
-<div class="card-number">
-04 / BUSINESS
-</div>
-
-<h3>
-کارت ویزیت
-</h3>
-
-<p>
-طراحی کارت ویزیت حرفه‌ای و اختصاصی.
-</p>
-
-</div>
-
-</div>
+    </div>
 
 </section>
 
+
+<!-- خدمات -->
 <section id="services">
 
-<div class="title">
+    <div class="section-title">
 
-<h2>خدمات Ayrik Design</h2>
+        <h2>
+            خدمات Ayrik Design
+        </h2>
 
-<p>
-طراحی برای برندهایی که می‌خواهند متفاوت دیده شوند.
-</p>
+        <p>
+            طراحی حرفه‌ای برای ساخت یک هویت متفاوت
+        </p>
 
-</div>
+    </div>
 
-<div class="services">
 
-<div class="service">
-<div class="icon">✦</div>
-<h3>طراحی لوگو</h3>
-<p>طراحی لوگوی اختصاصی و حرفه‌ای.</p>
-</div>
+    <div class="services">
 
-<div class="service">
-<div class="icon">◈</div>
-<h3>طراحی پروفایل</h3>
-<p>طراحی پروفایل خاص برای شبکه‌های اجتماعی.</p>
-</div>
+        <div class="card">
 
-<div class="service">
-<div class="icon">▣</div>
-<h3>پوستر تبلیغاتی</h3>
-<p>طراحی پوستر برای تبلیغات و معرفی برند.</p>
-</div>
+            <div class="card-icon">
+                🎨
+            </div>
 
-<div class="service">
-<div class="icon">◆</div>
-<h3>کارت ویزیت</h3>
-<p>طراحی کارت ویزیت مدرن و حرفه‌ای.</p>
-</div>
+            <h3>
+                طراحی لوگو
+            </h3>
 
-</div>
+            <p>
+                طراحی لوگوی اختصاصی و حرفه‌ای
+                برای برند شما.
+            </p>
 
-</section>
+        </div>
 
-<section id="account">
 
-<div class="title">
+        <div class="card">
 
-<h2>حساب کاربری</h2>
+            <div class="card-icon">
+                🖼️
+            </div>
 
-<p>
-برای ثبت‌نام یا ورود اطلاعات خود را وارد کنید.
-</p>
+            <h3>
+                طراحی پوستر
+            </h3>
 
-</div>
+            <p>
+                پوسترهای تبلیغاتی جذاب و مدرن.
+            </p>
 
-<div class="auth-box">
+        </div>
 
-<h3>ورود / ثبت‌نام</h3>
 
-<input
-class="input"
-type="text"
-id="username"
-placeholder="نام کاربری">
+        <div class="card">
 
-<input
-class="input"
-type="email"
-id="email"
-placeholder="ایمیل">
+            <div class="card-icon">
+                👤
+            </div>
 
-<input
-class="input"
-type="password"
-id="password"
-placeholder="رمز عبور">
+            <h3>
+                طراحی پروفایل
+            </h3>
 
-<div class="robot">
+            <p>
+                طراحی پروفایل اختصاصی برای شبکه‌های اجتماعی.
+            </p>
 
-<input type="checkbox" id="robot">
+        </div>
 
-<label for="robot">
-من ربات نیستم
-</label>
 
-</div>
+        <div class="card">
 
-<button
-class="btn primary"
-style="width:100%"
-onclick="registerUser()">
+            <div class="card-icon">
+                💳
+            </div>
 
-ثبت‌نام
+            <h3>
+                کارت ویزیت
+            </h3>
 
-</button>
+            <p>
+                طراحی کارت ویزیت حرفه‌ای و خاص.
+            </p>
 
-<p
-id="authMessage"
-style="text-align:center;margin-top:15px;color:#aaa">
-</p>
+        </div>
 
-</div>
+    </div>
 
 </section>
 
+
+<!-- نمونه کار -->
+<section id="portfolio">
+
+    <div class="section-title">
+
+        <h2>
+            نمونه‌کارها
+        </h2>
+
+        <p>
+            بخشی از پروژه‌های طراحی شده توسط Ayrik Design
+        </p>
+
+    </div>
+
+
+    <div class="portfolio">
+
+        <div class="work">
+
+            <img
+                src="portfolio1.jpg"
+                alt="نمونه کار"
+            >
+
+            <div class="work-info">
+
+                <h3>
+                    نمونه کار شماره ۱
+                </h3>
+
+                <p>
+                    طراحی گرافیکی اختصاصی
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="work">
+
+            <img
+                src="portfolio2.jpg"
+                alt="نمونه کار"
+            >
+
+            <div class="work-info">
+
+                <h3>
+                    نمونه کار شماره ۲
+                </h3>
+
+                <p>
+                    طراحی تبلیغاتی
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="work">
+
+            <img
+                src="portfolio3.jpg"
+                alt="نمونه کار"
+            >
+
+            <div class="work-info">
+
+                <h3>
+                    نمونه کار شماره ۳
+                </h3>
+
+                <p>
+                    طراحی اختصاصی
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- اینستاگرام -->
+<section id="social">
+
+    <div class="section-title">
+
+        <h2>
+            شبکه‌های اجتماعی
+        </h2>
+
+        <p>
+            برای دیدن جدیدترین کارها ما را دنبال کنید.
+        </p>
+
+    </div>
+
+
+    <div class="social-box">
+
+
+        <!-- Ayrik Design -->
+
+        <a
+            class="social"
+            href="https://www.instagram.com/ayri.kdesign08/"
+            target="_blank"
+        >
+
+            <div class="social-icon">
+                📸
+            </div>
+
+            <strong>
+                Ayrik Design
+            </strong>
+
+            <small>
+                @ayri.kdesign08
+            </small>
+
+        </a>
+
+
+        <!-- Medo AI -->
+
+        <a
+            class="social"
+            href="https://www.instagram.com/medoai2026/"
+            target="_blank"
+        >
+
+            <div class="social-icon">
+                🤖
+            </div>
+
+            <strong>
+                Medo AI
+            </strong>
+
+            <small>
+                @medoai2026
+            </small>
+
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- سفارش -->
 <section>
 
-<div class="title">
+    <div class="order">
 
-<h2>ثبت سفارش</h2>
+        <h2>
+            پروژه خودت را شروع کن 🚀
+        </h2>
 
-<p>
-برای ثبت سفارش سریع وارد ربات Ayrik AI شوید.
-</p>
+        <p>
+            برای ثبت سفارش سریع وارد ربات Ayrik AI شوید.
+        </p>
 
-</div>
+        <a
+            class="btn btn-main"
+            href="https://t.me/Ayrik_Ai09_bot"
+            target="_blank"
+        >
+            🤖 ورود به ربات و سفارش
+        </a>
 
-<div class="buttons">
-
-<a
-class="btn telegram"
-href="https://t.me/Ayrik_Ai09_bot"
-target="_blank"
-rel="noopener noreferrer">
-
-🤖 ورود مستقیم به Ayrik AI
-
-</a>
-
-</div>
+    </div>
 
 </section>
+
 
 <footer>
 
-© 2026
-<strong>Ayrik Design</strong>
-<br>
-طراحی با ایده، ساخته‌شده برای متفاوت دیده شدن.
+    © 2026
+    <strong>
+        Ayrik Design
+    </strong>
+
+    | تمامی حقوق محفوظ است.
 
 </footer>
 
+
 <script>
 
-function registerUser(){
+/* ===========================
+   ساعت واقعی
+=========================== */
 
-const username =
-document.getElementById("username").value.trim();
+function updateClock(){
 
-const email =
-document.getElementById("email").value.trim();
+    const now = new Date();
 
-const password =
-document.getElementById("password").value;
+    const hours =
+        String(now.getHours()).padStart(2,"0");
 
-const robot =
-document.getElementById("robot").checked;
+    const minutes =
+        String(now.getMinutes()).padStart(2,"0");
 
-const message =
-document.getElementById("authMessage");
-
-if(!username || !email || !password){
-
-message.textContent =
-"لطفاً همه قسمت‌ها را کامل کنید.";
-
-return;
+    document.getElementById("clock").textContent =
+        hours + ":" + minutes;
 }
 
-if(!robot){
+updateClock();
 
-message.textContent =
-"لطفاً گزینه «من ربات نیستم» را تأیید کنید.";
+setInterval(updateClock,1000);
 
-return;
-}
 
-message.textContent =
-"ثبت‌نام نمایشی انجام شد! برای ثبت سفارش وارد ربات Ayrik AI شوید.";
+/* ===========================
+   چرخش سه بعدی با لمس
+=========================== */
 
-}
+const area =
+    document.getElementById("watchArea");
 
-document.querySelectorAll(".card").forEach(card=>{
+const watch =
+    document.getElementById("watch");
 
-card.addEventListener("mousemove",e=>{
+let dragging = false;
 
-const rect=card.getBoundingClientRect();
+let startX = 0;
+let startY = 0;
 
-const x=e.clientX-rect.left;
-const y=e.clientY-rect.top;
+let rotationX = -8;
+let rotationY = 18;
 
-const rotateX=((y/rect.height)-.5)*-10;
-const rotateY=((x/rect.width)-.5)*10;
 
-card.style.transform=
-`perspective(900px)
-rotateX(${rotateX}deg)
-rotateY(${rotateY}deg)
-translateY(-10px)`;
+/* شروع لمس */
 
-});
+area.addEventListener(
+    "pointerdown",
+    function(e){
 
-card.addEventListener("mouseleave",()=>{
+        dragging = true;
 
-card.style.transform="";
+        startX = e.clientX;
+        startY = e.clientY;
 
-});
+        area.setPointerCapture(e.pointerId);
 
-});
+    }
+);
+
+
+/* حرکت انگشت */
+
+area.addEventListener(
+    "pointermove",
+    function(e){
+
+        if(!dragging) return;
+
+        const moveX =
+            e.clientX - startX;
+
+        const moveY =
+            e.clientY - startY;
+
+
+        /*
+        حرکت چپ و راست
+        */
+
+        rotationY += moveX * 0.5;
+
+
+        /*
+        حرکت بالا و پایین
+        */
+
+        rotationX -= moveY * 0.5;
+
+
+        /*
+        جلوگیری از چرخش بیش از حد
+        */
+
+        rotationX =
+            Math.max(
+                -75,
+                Math.min(75,rotationX)
+            );
+
+
+        watch.style.transform =
+            "rotateX(" +
+            rotationX +
+            "deg) rotateY(" +
+            rotationY +
+            "deg)";
+
+
+        startX = e.clientX;
+        startY = e.clientY;
+
+    }
+);
+
+
+/* پایان لمس */
+
+area.addEventListener(
+    "pointerup",
+    function(){
+
+        dragging = false;
+
+    }
+);
+
+area.addEventListener(
+    "pointercancel",
+    function(){
+
+        dragging = false;
+
+    }
+);
 
 </script>
 
